@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://c4xiuuva7yqtu"]
 
-[ext_resource type="Script" path="res://Moves/MoveCard.gd" id="1_l05d5"]
+[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="1_l05d5"]
 
 [resource]
 script = ExtResource("1_l05d5")

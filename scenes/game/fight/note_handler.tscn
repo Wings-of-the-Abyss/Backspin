@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bholuvfuiblp1"]
 
-[ext_resource type="Script" path="res://fight/note_handler.gd" id="1_1ppch"]
+[ext_resource type="Script" path="res://scenes/game/fight/note_handler.gd" id="1_1ppch"]
 [ext_resource type="Texture2D" uid="uid://d0rqseql41au3" path="res://icon.svg" id="2_jvgw3"]
 
 [node name="NoteHandler" type="Node"]

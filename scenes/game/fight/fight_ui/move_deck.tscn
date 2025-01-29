@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dlla330gdcucj"]
 
-[ext_resource type="Script" path="res://fight/fight_ui/move_deck.gd" id="1_j4725"]
+[ext_resource type="Script" path="res://scenes/game/fight/fight_ui/move_deck.gd" id="1_j4725"]
 
 [node name="MoveDeck" type="Control"]
 layout_mode = 3
