@@ -1,6 +1,6 @@
 extends Node
 
-const EXAMPLE = preload("res://Moves/Example.tres")
+const EXAMPLE = preload("res://scenes/game/Moves/Example.tres")
 
 var CurrentScore: int = 0
 var Combo: int = 1
