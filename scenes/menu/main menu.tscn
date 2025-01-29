@@ -1,9 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://bjlygdna7gbq3"]
+[gd_scene load_steps=14 format=3 uid="uid://bjlygdna7gbq3"]
 
 [ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_8epr1"]
-[ext_resource type="FontFile" uid="uid://c14vfvwox82p" path="res://assets/fonts/dogicapixel.ttf" id="1_rtowl"]
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_w0fda"]
+[ext_resource type="Shader" path="res://scenes/menu/panel.gdshader" id="3_5d0x0"]
+[ext_resource type="Texture2D" uid="uid://lacd8v6d8jju" path="res://assets/ui/Start_Button.png" id="3_jdxg7"]
 [ext_resource type="AudioStream" uid="uid://wugwq013fwdi" path="res://assets/sfx/hover.wav" id="4_ebqsn"]
+[ext_resource type="Texture2D" uid="uid://cnujj135bb7lc" path="res://assets/ui/Options_Button.png" id="4_f4o45"]
+[ext_resource type="Texture2D" uid="uid://xytxblhph60c" path="res://assets/ui/Quit_Button.png" id="5_3mtcj"]
+[ext_resource type="Texture2D" uid="uid://tbr2w71rtxs8" path="res://assets/ui/Collections_Button.png" id="6_n1jjc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mw15r"]
 
 [sub_resource type="Gradient" id="Gradient_1761r"]
 colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
@@ -12,162 +18,24 @@ colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
 gradient = SubResource("Gradient_1761r")
 fill_from = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kejq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_humsc"]
+shader = ExtResource("3_5d0x0")
+shader_parameter/zoom = 1.0
+shader_parameter/wave_crop = 0.0
+shader_parameter/brightness = 0.3
+shader_parameter/speed = 2.0
+shader_parameter/iterations = 5.0
+shader_parameter/freq_start = 20.0
+shader_parameter/freq_coeff = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yk2l"]
 bg_color = Color(0.174028, 0.174028, 0.174028, 1)
+border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n03xl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1hfv"]
-bg_color = Color(0, 0.243137, 0.709804, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsiio"]
-bg_color = Color(1.20808e-05, 0.152441, 0.477106, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayu7m"]
-bg_color = Color(0, 0.396078, 0.901961, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfjv3"]
-bg_color = Color(0.776471, 0.341176, 0.00392157, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xn00"]
-content_margin_left = 0.0
-content_margin_right = 0.0
-bg_color = Color(0.532531, 0.224833, 0.00134954, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua5vp"]
-bg_color = Color(0.967443, 0.539214, 0.0194733, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgk56"]
-bg_color = Color(0.737255, 0.0784314, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8va83"]
-bg_color = Color(0.526395, 0.0429191, 1.92523e-07, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h40li"]
-bg_color = Color(0.921569, 0.227451, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_va4fk"]
-bg_color = Color(2.86378e-06, 0.472538, 0.169896, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nraxb"]
-bg_color = Color(1.37173e-06, 0.319627, 0.104708, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6x8t"]
-bg_color = Color(6.73831e-07, 0.682719, 0.259498, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0, 0, 0, 1)
-shadow_size = 2
 shadow_offset = Vector2(0, 2)
 
 [node name="Control" type="Control"]
@@ -180,6 +48,7 @@ grow_vertical = 2
 script = ExtResource("1_w0fda")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_mw15r")
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 320.0
@@ -194,82 +63,67 @@ offset_bottom = 320.0
 texture = SubResource("GradientTexture2D_qctco")
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_humsc")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -248.0
-offset_top = -96.0
-offset_right = 248.0
+offset_left = -280.0
+offset_top = -264.0
+offset_right = -152.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3kejq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3yk2l")
 
-[node name="play" type="Button" parent="."]
+[node name="play" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = -88.0
-offset_right = -136.0
-offset_bottom = -40.0
+offset_left = -288.0
+offset_top = -272.0
+offset_right = -160.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_rtowl")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n03xl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_m1hfv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gsiio")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ayu7m")
-text = "PLAY"
+texture_normal = ExtResource("3_jdxg7")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="options" type="Button" parent="."]
+[node name="options" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 232.0
-offset_right = 296.0
-offset_bottom = 280.0
-theme_override_fonts/font = ExtResource("1_rtowl")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n03xl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_kfjv3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3xn00")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ua5vp")
-text = "OPTIONS"
+offset_left = 32.0
+offset_top = 104.0
+offset_right = 160.0
+offset_bottom = 176.0
+texture_normal = ExtResource("4_f4o45")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="quit" type="Button" parent="."]
+[node name="quit" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 304.0
-offset_top = 232.0
-offset_right = 384.0
-offset_bottom = 280.0
-theme_override_fonts/font = ExtResource("1_rtowl")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n03xl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pgk56")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_8va83")
-theme_override_styles/normal = SubResource("StyleBoxFlat_h40li")
-text = "QUIT"
+offset_left = 32.0
+offset_top = 160.0
+offset_right = 160.0
+offset_bottom = 232.0
+texture_normal = ExtResource("5_3mtcj")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="collections" type="Button" parent="."]
+[node name="collections" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 392.0
-offset_top = 232.0
-offset_right = 560.0
-offset_bottom = 280.0
-theme_override_fonts/font = ExtResource("1_rtowl")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n03xl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_va4fk")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_nraxb")
-theme_override_styles/normal = SubResource("StyleBoxFlat_m6x8t")
-text = "COLLECTIONS"
+offset_left = 32.0
+offset_top = 216.0
+offset_right = 160.0
+offset_bottom = 288.0
+texture_normal = ExtResource("6_n1jjc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ebqsn")

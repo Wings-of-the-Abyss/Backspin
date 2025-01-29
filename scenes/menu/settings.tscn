@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://crkwqxkulmmf1"]
+[gd_scene load_steps=7 format=3 uid="uid://crkwqxkulmmf1"]
 
 [ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_c0oph"]
+[ext_resource type="Shader" path="res://scenes/menu/panel.gdshader" id="2_on0ao"]
 
 [sub_resource type="Gradient" id="Gradient_yxjee"]
 colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
@@ -8,6 +9,16 @@ colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kr256"]
 gradient = SubResource("Gradient_yxjee")
 fill_from = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46tef"]
+shader = ExtResource("2_on0ao")
+shader_parameter/zoom = 1.0
+shader_parameter/wave_crop = 0.0
+shader_parameter/brightness = 0.5
+shader_parameter/speed = 1.0
+shader_parameter/iterations = 5.0
+shader_parameter/freq_start = 20.0
+shader_parameter/freq_coeff = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhld5"]
 bg_color = Color(0.174028, 0.174028, 0.174028, 1)
@@ -42,6 +53,7 @@ offset_bottom = 320.0
 texture = SubResource("GradientTexture2D_kr256")
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_46tef")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
