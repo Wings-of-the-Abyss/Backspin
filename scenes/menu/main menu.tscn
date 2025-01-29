@@ -276,6 +276,7 @@ stream = ExtResource("4_ebqsn")
 volume_db = -30.0
 
 [connection signal="mouse_entered" from="play" to="." method="_on_buttons_mouse_entered"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="mouse_entered" from="options" to="." method="_on_buttons_mouse_entered"]
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="quit" to="." method="_on_buttons_mouse_entered"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlla330gdcucj"]
+
+[ext_resource type="Script" path="res://fight/fight_ui/move_deck.gd" id="1_j4725"]
+
+[node name="MoveDeck" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j4725")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="move1" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="move2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="move3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="move4" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "4"
+
+[connection signal="button_down" from="HBoxContainer/move1" to="." method="_on_move_1_button_down"]
+[connection signal="button_down" from="HBoxContainer/move2" to="." method="_on_move_2_button_down"]
+[connection signal="button_down" from="HBoxContainer/move3" to="." method="_on_move_3_button_down"]
+[connection signal="button_down" from="HBoxContainer/move4" to="." method="_on_move_4_button_down"]
