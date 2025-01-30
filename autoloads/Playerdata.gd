@@ -7,12 +7,7 @@ var Combo: int = 1
 var MoveDeck: Array[Move] = [
 	EXAMPLE,
 ]
-var ActionPoints: Array[StringName] = [
-	&"left",
-	&"right",
-	&"up",
-	&"down"
-]
+var ActionPoints: Array[StringName] = []
 
 func update_score(amount: int):
 	if amount < 0:

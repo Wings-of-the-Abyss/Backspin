@@ -60,14 +60,18 @@ func add_move_to_queue(move: Move) -> void:
 
 ##Executes the queue
 func execute_queue() -> void:
+	print(queue)
 	for M in queue:
 		await play_move(M)
 	execution_complete.emit()
+	
 
 ##Executes the sequence of notes
 func play_move(move: Move) -> void:
-	for i in range(move.Notes.size()-1):
+	print("bruh")
+	for i in range(move.Notes.size()):
 		var note_type = move.Notes[i]
+		print(note_type)
 		var note = Note.new()
 		note.assigned_input = note_type
 		active_notes.push_front(note)
