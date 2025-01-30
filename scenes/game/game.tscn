@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cbx4ekddo1dpc"]
+[gd_scene load_steps=3 format=3 uid="uid://cbx4ekddo1dpc"]
+
+[ext_resource type="PackedScene" uid="uid://bholuvfuiblp1" path="res://scenes/game/fight/note_handler.tscn" id="1_ymu70"]
+[ext_resource type="PackedScene" uid="uid://dlla330gdcucj" path="res://scenes/game/fight/fight_ui/move_deck.tscn" id="2_vtpkq"]
 
 [node name="Game" type="Node"]
+
+[node name="NoteHandler" parent="." instance=ExtResource("1_ymu70")]
+
+[node name="MoveDeck" parent="NoteHandler" instance=ExtResource("2_vtpkq")]

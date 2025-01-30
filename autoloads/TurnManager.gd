@@ -1,6 +1,6 @@
 extends Node
 
-var turn: bool = true
+var turn: bool = false
 var active_notes: Array[Note] = []
 var queue: Array[Move] = []
 
@@ -16,6 +16,13 @@ signal execution_complete
 
 signal player_turn_started
 signal enemy_turn_started
+
+var setup_complete: bool = false
+
+func _ready():
+	while !setup_complete:
+		await get_tree().create_timer(0.01).timeout
+	turn_switch()
 
 ##Sequence of events for the Player's turn
 func player_turn() -> void:
@@ -55,6 +62,7 @@ func add_move_to_queue(move: Move) -> void:
 func execute_queue() -> void:
 	for M in queue:
 		await play_move(M)
+	execution_complete.emit()
 
 ##Executes the sequence of notes
 func play_move(move: Move) -> void:
@@ -62,9 +70,9 @@ func play_move(move: Move) -> void:
 		var note_type = move.Notes[i]
 		var note = Note.new()
 		note.assigned_input = note_type
-		active_notes.append(note)
+		active_notes.push_front(note)
+		get_tree().get_first_node_in_group("note-handler").add_note(note_type, note)
 		await get_tree().create_timer(move.Timings[i]).timeout
-	return
 
 #endregion
 
