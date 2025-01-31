@@ -50,8 +50,10 @@ script = ExtResource("1_w0fda")
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_mw15r")
 layout_mode = 0
-offset_right = 640.0
+offset_left = -163.0
+offset_right = 477.0
 offset_bottom = 320.0
+scale = Vector2(2.2442, 2.2442)
 texture = ExtResource("1_8epr1")
 expand_mode = 1
 
@@ -70,57 +72,47 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -280.0
-offset_top = -264.0
-offset_right = -152.0
-offset_bottom = -32.0
+offset_left = -497.0
+offset_top = -683.0
+offset_right = -369.0
+offset_bottom = -451.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(2.75258, 2.75258)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3yk2l")
 
-[node name="play" type="TextureButton" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -288.0
-offset_top = -272.0
-offset_right = -160.0
-offset_bottom = -200.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+
+[node name="play" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 texture_normal = ExtResource("3_jdxg7")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="options" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 104.0
-offset_right = 160.0
-offset_bottom = 176.0
+[node name="options" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 texture_normal = ExtResource("4_f4o45")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="quit" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 160.0
-offset_right = 160.0
-offset_bottom = 232.0
+[node name="quit" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 texture_normal = ExtResource("5_3mtcj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="collections" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 216.0
-offset_right = 160.0
-offset_bottom = 288.0
+[node name="collections" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 texture_normal = ExtResource("6_n1jjc")
 ignore_texture_size = true
 stretch_mode = 0
@@ -129,10 +121,10 @@ stretch_mode = 0
 stream = ExtResource("4_ebqsn")
 volume_db = -30.0
 
-[connection signal="mouse_entered" from="play" to="." method="_on_buttons_mouse_entered"]
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
-[connection signal="mouse_entered" from="options" to="." method="_on_buttons_mouse_entered"]
-[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
-[connection signal="mouse_entered" from="quit" to="." method="_on_buttons_mouse_entered"]
-[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
-[connection signal="mouse_entered" from="collections" to="." method="_on_buttons_mouse_entered"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/play" to="." method="_on_buttons_mouse_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/options" to="." method="_on_buttons_mouse_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/quit" to="." method="_on_buttons_mouse_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/collections" to="." method="_on_buttons_mouse_entered"]

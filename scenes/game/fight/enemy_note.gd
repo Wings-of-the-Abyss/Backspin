@@ -14,20 +14,13 @@ var note_startY = 256.0
 
 @export var enemy: bool = false
 
-func _unhandled_input(_event):
-	if TurnManager.active_notes.is_empty() or TurnManager.turn: return
-	for N in TurnManager.active_notes:
-		if abs(N.time_window) <= 0.075:
-			FreedNotes.append(N)
-			FallingNotes.get(N).hide()
-		
-
 func _process(delta):
 	if FallingNotes.is_empty(): return
+	
 	for N in FallingNotes.keys():
-		if N.time_window <= -1.0:
+		if is_equal_approx(N.time_window, 0.0):
 			FreedNotes.append(N)
-			continue
+			FallingNotes.get(N).hide()
 		N.time_window -= delta
 		var node = FallingNotes.get(N)
 		node.position.y = (note_startY*N.time_window)+notecatcher.position.y
@@ -35,10 +28,11 @@ func _process(delta):
 func note_cleanup() -> void:
 	if FreedNotes.is_empty(): return
 	for FN in FreedNotes:
-		if FallingNotes.get(FN) != null:
-			FallingNotes.get(FN).queue_free()
+		if !FallingNotes.has(FN): continue
+		FallingNotes.get(FN).queue_free()
 		FallingNotes.erase(FN)
 		TurnManager.active_notes.erase(FN)
+	FreedNotes.clear()
 
 func add_note(type: StringName, id: Note) -> void:
 	var sprite = Sprite2D.new()
@@ -48,19 +42,19 @@ func add_note(type: StringName, id: Note) -> void:
 	match type:
 		&"left":
 			texture = ARROW_LEFT
-			startpos.x += 8
+			startpos.x += 16
 		&"up":
 			texture = ARROW_UP
-			startpos.x += -55
+			startpos.x += -110
 		&"right":
 			texture = ARROW_RIGHT
-			startpos.x += 49
+			startpos.x += 98
 		&"down":
 			texture = ARROW_DOWN
-			startpos.x += -25
+			startpos.x += -50
 	
 	if texture:
-		sprite.scale = Vector2.ONE*0.125
+		sprite.scale = Vector2.ONE*0.2
 		sprite.texture = texture
 		add_child(sprite)
 		sprite.position = startpos

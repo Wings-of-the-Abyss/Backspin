@@ -11,8 +11,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 13.0
-offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -21,17 +19,16 @@ script = ExtResource("1_7n667")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 124.0
-offset_right = 411.0
-offset_bottom = 80.0
-scale = Vector2(0.75, 0.75)
-theme_override_constants/separation = -67
+offset_left = 321.0
+offset_top = 33.0
+offset_right = 449.0
+offset_bottom = 97.0
+scale = Vector2(1.15834, 1.15834)
 
 [node name="HYPE" type="TextureProgressBar" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 77.0
 nine_patch_stretch = true
 texture_under = ExtResource("2_k1uy5")
 texture_progress = ExtResource("3_edggg")
@@ -40,7 +37,6 @@ texture_progress = ExtResource("3_edggg")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("4_gg0vo")
 texture_progress = ExtResource("5_yh0fb")

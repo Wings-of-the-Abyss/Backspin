@@ -22,11 +22,10 @@ TurnManager="*res://autoloads/TurnManager.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=320
-window/size/window_width_override=1080
-window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1080
+window/size/viewport_height=720
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [global_group]
 
@@ -63,6 +62,5 @@ down={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

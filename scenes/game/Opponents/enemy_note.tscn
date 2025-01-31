@@ -8,8 +8,8 @@ script = ExtResource("1_rcqrp")
 enemy = true
 
 [node name="Notecatcher" type="Sprite2D" parent="."]
-position = Vector2(556, 34)
-scale = Vector2(0.1, 0.1)
+position = Vector2(903, 70)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_guifo")
 
 [node name="Timer" type="Timer" parent="."]
