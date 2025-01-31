@@ -34,7 +34,6 @@ func _ready():
 ##Sequence of events for the Player's turn
 func player_turn() -> void:
 	PlayerData.ActionPoints.append_array(actionpoint_refresh)
-	PlayerData.Hype = 0
 	player_turn_started.emit()
 	await execute_moves
 	execute_queue()
@@ -87,6 +86,7 @@ func play_move(move: Move) -> void:
 		var note_type = move.Notes[i]
 		var note = Note.new()
 		note.assigned_input = note_type
+		note.hype_mult = move.Multiplier
 		active_notes.push_front(note)
 		get_tree().get_first_node_in_group("note-handler").add_note(note_type, note)
 		await get_tree().create_timer(move.Timings[i]).timeout

@@ -8,4 +8,6 @@ class_name Move
 ##First value here maps to the time between first and second values of Notes
 @export var Timings: Array[float] = []
 
+@export var Multiplier: float = 1.0
+
 #See "res://Moves/Example.tres" for the formatting to be followed

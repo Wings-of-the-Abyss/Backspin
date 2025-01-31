@@ -110,7 +110,8 @@ texture_normal = ExtResource("5_3mtcj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="collections" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="WIP" type="TextureButton" parent="Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("6_n1jjc")
@@ -119,7 +120,8 @@ stretch_mode = 0
 
 [node name="hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ebqsn")
-volume_db = -30.0
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="Panel/VBoxContainer/play" to="." method="_on_buttons_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/play" to="." method="_on_play_pressed"]
@@ -127,4 +129,4 @@ volume_db = -30.0
 [connection signal="pressed" from="Panel/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="mouse_entered" from="Panel/VBoxContainer/quit" to="." method="_on_buttons_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/quit" to="." method="_on_quit_pressed"]
-[connection signal="mouse_entered" from="Panel/VBoxContainer/collections" to="." method="_on_buttons_mouse_entered"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/WIP" to="." method="_on_buttons_mouse_entered"]

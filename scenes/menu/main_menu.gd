@@ -1,12 +1,7 @@
 extends Control
 
-func _process(_delta):
-	pass
-
-
 func _on_buttons_mouse_entered() -> void:
 	$hover.play()
-
 
 func _on_quit_pressed() -> void:
 	get_tree().quit() # Replace with function body.

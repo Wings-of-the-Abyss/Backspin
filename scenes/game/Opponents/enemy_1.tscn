@@ -9,3 +9,5 @@ script = ExtResource("1_jpg0i")
 EnemyMoves = Array[ExtResource("2_n3370")]([ExtResource("3_duufj")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

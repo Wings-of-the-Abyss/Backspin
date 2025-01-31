@@ -11,19 +11,22 @@ var HP: int = 100
 var Hype: int = 0
 
 signal died
+signal damage_taken
+signal hype_updated
 
 func _ready():
 	died.connect(TurnManager.on_death)
 
 func update_hype(amount: int):
 	Hype = max(0, Hype+amount)
+	hype_updated.emit()
 	if Hype >= 100:
 		HP = min(HP + 25, 100)
-		Hype = 75
+		Hype = 0
 
 func deal_damage(amount: int) -> void:
 	HP -= amount
-	print("ow...")
+	damage_taken.emit()
 	if HP <= 0:
 		died.emit()
 

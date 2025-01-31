@@ -30,7 +30,7 @@ func _unhandled_input(_event):
 			if poptime*100 < 5.0:
 				FreedNotes.append(N)
 				FallingNotes.get(N).hide()
-				hype += floor(25 * (1-poptime)*N.hype_mult)
+				hype += floor(10 * (1-poptime)*N.hype_mult)
 				print("Hit!")
 			else:
 				hype = -30
