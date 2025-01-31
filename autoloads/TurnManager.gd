@@ -26,8 +26,9 @@ func _ready():
 
 ##Sequence of events for the Player's turn
 func player_turn() -> void:
-	player_turn_started.emit()
 	PlayerData.ActionPoints.append_array(actionpoint_refresh)
+	PlayerData.Hype = 0
+	player_turn_started.emit()
 	await execute_moves
 	execute_queue()
 	await execution_complete
@@ -53,25 +54,22 @@ func selection_complete() -> void:
 func add_move_to_queue(move: Move) -> void:
 	for N in move.Notes:
 		if !PlayerData.ActionPoints.has(N):
-			print("not enough action points")
 			return
 		PlayerData.ActionPoints.erase(N)
 	queue.append(move)
 
 ##Executes the queue
 func execute_queue() -> void:
-	print(queue)
 	for M in queue:
 		await play_move(M)
+	queue.clear()
 	execution_complete.emit()
 	
 
 ##Executes the sequence of notes
 func play_move(move: Move) -> void:
-	print("bruh")
 	for i in range(move.Notes.size()):
 		var note_type = move.Notes[i]
-		print(note_type)
 		var note = Note.new()
 		note.assigned_input = note_type
 		active_notes.push_front(note)

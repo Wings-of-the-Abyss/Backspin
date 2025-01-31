@@ -7,6 +7,6 @@
 script = ExtResource("1_1ppch")
 
 [node name="Notecatcher" type="Sprite2D" parent="."]
-position = Vector2(128, 48)
-scale = Vector2(0.124879, 0.124879)
+position = Vector2(77, 34)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_veia4")

@@ -3,6 +3,7 @@ extends Node
 @onready var NoteCatcher = $Notecatcher
 
 var FallingNotes: Dictionary = {}
+var FreedNotes: Array[Note] = []
 
 @onready var notecatcher = $Notecatcher
 
@@ -23,33 +24,38 @@ func _unhandled_input(_event):
 			(Input.is_action_just_pressed("down") and N.assigned_input ==  &"down")
 			)
 		
-		var score = 0.0
+		var score = 0
 		if input:
 			var poptime = abs(N.time_window)
 			if poptime < 0.2:
+				FreedNotes.append(N)
+				score = 30 * (1-poptime) 
 				print("Hit!")
 			else:
+				score = -30
 				print("miss...")
 		
 		
-		if score != 0.0: PlayerData.update_score(score)
+		if score != 0: PlayerData.update_hype(score)
 
 func _process(delta):
 	if TurnManager.active_notes.is_empty(): return
-	var freed_notes = []
 	for N in TurnManager.active_notes:
 		if N.time_window <= -1.0:
-			freed_notes.append(N)
+			FreedNotes.append(N)
 			continue
 		N.time_window -= delta
 		var node = FallingNotes.get(N)
 		node.position.y = (note_startY*N.time_window)+notecatcher.position.y
-	for FN in freed_notes:
+	
+	note_cleanup()
+
+func note_cleanup() -> void:
+	for FN in FreedNotes:
 		FallingNotes.get(FN).queue_free()
 		FallingNotes.erase(FN)
 		TurnManager.active_notes.erase(FN)
-	
-	
+
 func add_note(type: StringName, id: Note) -> void:
 	var sprite = Sprite2D.new()
 	var texture
@@ -58,16 +64,16 @@ func add_note(type: StringName, id: Note) -> void:
 	match type:
 		&"left":
 			texture = ARROW_LEFT
-			startpos.x = 139.0
+			startpos.x = 327.0
 		&"up":
 			texture = ARROW_UP
-			startpos.x = 59.5
+			startpos.x = 248.5
 		&"right":
 			texture = ARROW_RIGHT
-			startpos.x = 188.0
+			startpos.x = 279.0
 		&"down":
 			texture = ARROW_DOWN
-			startpos.x = 96.0
+			startpos.x = 286.0
 	
 	if texture:
 		sprite.scale = Vector2.ONE*0.125

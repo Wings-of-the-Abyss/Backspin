@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1csfjfy2em78"]
+
+[ext_resource type="Script" path="res://scenes/game/ui/health.gd" id="1_7n667"]
+[ext_resource type="Texture2D" uid="uid://dkjibymkil15s" path="res://assets/ui/Hype.png" id="2_k1uy5"]
+[ext_resource type="Texture2D" uid="uid://cqrl234pjjuo" path="res://assets/ui/Hype_progress.png" id="3_edggg"]
+[ext_resource type="Texture2D" uid="uid://d1tisnlpwjiyb" path="res://assets/ui/HP.png" id="4_gg0vo"]
+[ext_resource type="Texture2D" uid="uid://dxme31jjm1ndy" path="res://assets/ui/HP_progress.png" id="5_yh0fb"]
+
+[node name="Health" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 13.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_7n667")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 124.0
+offset_right = 411.0
+offset_bottom = 80.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = -67
+
+[node name="HYPE" type="TextureProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 77.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_k1uy5")
+texture_progress = ExtResource("3_edggg")
+
+[node name="HP" type="TextureProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_gg0vo")
+texture_progress = ExtResource("5_yh0fb")

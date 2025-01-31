@@ -30,7 +30,6 @@ func set_deck_visible(b: bool) -> void:
 
 func _on_move_1_button_down() -> void:
 	TurnManager.add_move_to_queue(hand[0])
-	print(hand[0])
 
 func _on_move_2_button_down() -> void:
 	TurnManager.add_move_to_queue(hand[1])

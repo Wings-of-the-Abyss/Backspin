@@ -2,17 +2,18 @@ extends Node
 
 const EXAMPLE = preload("res://scenes/game/Moves/Example.tres")
 
-var CurrentScore: int = 0
-var Combo: int = 1
 var MoveDeck: Array[Move] = [
 	EXAMPLE,
 ]
 var ActionPoints: Array[StringName] = []
 
-func update_score(amount: int):
-	if amount < 0:
-		Combo = 1
-	CurrentScore = max(0, CurrentScore + (amount*Combo))
+var HP: int = 100
+var Hype: int = 0
+
+func update_hype(amount: int):
+	Hype += amount
+	if Hype >= 100:
+		HP = min(HP + 25, 100)
 
 func add_to_deck(m: Move) -> void:
 	#add additional deck adding  logic here
