@@ -6,3 +6,4 @@
 script = ExtResource("1_l05d5")
 Notes = Array[StringName]([&"left", &"right", &"up", &"down"])
 Timings = Array[float]([1.0, 0.6, 1.4, 0.6])
+Multiplier = 1.0

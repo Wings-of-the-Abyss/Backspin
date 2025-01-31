@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbx4ekddo1dpc"]
+
+[ext_resource type="PackedScene" uid="uid://bholuvfuiblp1" path="res://scenes/game/fight/note_handler.tscn" id="1_ymu70"]
+[ext_resource type="PackedScene" uid="uid://dlla330gdcucj" path="res://scenes/game/fight/fight_ui/move_deck.tscn" id="2_vtpkq"]
+[ext_resource type="PackedScene" uid="uid://d1csfjfy2em78" path="res://scenes/game/ui/health.tscn" id="3_yyhnl"]
+[ext_resource type="PackedScene" uid="uid://duxpa1t1m1ayx" path="res://assets/gamebackground/model.gltf" id="4_6o2bc"]
+[ext_resource type="PackedScene" uid="uid://b2bww1rtjyclw" path="res://scenes/game/Opponents/enemy_note.tscn" id="4_fgibs"]
+
+[node name="Game" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" parent="CanvasLayer" instance=ExtResource("3_yyhnl")]
+
+[node name="MoveDeck" parent="CanvasLayer" instance=ExtResource("2_vtpkq")]
+
+[node name="NoteHandler" parent="CanvasLayer" instance=ExtResource("1_ymu70")]
+
+[node name="NoteHandler2" parent="CanvasLayer" instance=ExtResource("4_fgibs")]
+
+[node name="blockbench_export" parent="." instance=ExtResource("4_6o2bc")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 7, -12)

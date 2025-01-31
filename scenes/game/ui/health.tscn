@@ -14,27 +14,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_7n667")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_left = 321.0
-offset_top = 33.0
-offset_right = 449.0
-offset_bottom = 97.0
-scale = Vector2(1.15834, 1.15834)
-
-[node name="HYPE" type="TextureProgressBar" parent="VBoxContainer"]
+[node name="HYPE" type="TextureProgressBar" parent="."]
 layout_mode = 2
+offset_left = 625.0
+offset_top = 33.0
+offset_right = 687.0
+offset_bottom = 97.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 nine_patch_stretch = true
 texture_under = ExtResource("2_k1uy5")
 texture_progress = ExtResource("3_edggg")
 
-[node name="HP" type="TextureProgressBar" parent="VBoxContainer"]
+[node name="HP" type="TextureProgressBar" parent="."]
 layout_mode = 2
+offset_left = 468.0
+offset_top = 33.0
+offset_right = 530.0
+offset_bottom = 97.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 nine_patch_stretch = true

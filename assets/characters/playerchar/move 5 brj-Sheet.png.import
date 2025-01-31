@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4hgco1vlgjlk"
-path.s3tc="res://.godot/imported/Arrowsgrey.png-9443ec409fd896346d8601c1f1d2b94e.s3tc.ctex"
+uid="uid://djon6pveqkj7f"
+path="res://.godot/imported/move 5 brj-Sheet.png-416ad61f7a68e74ef40f92ac66ee5dad.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/arrows/Arrowsgrey.png"
-dest_files=["res://.godot/imported/Arrowsgrey.png-9443ec409fd896346d8601c1f1d2b94e.s3tc.ctex"]
+source_file="res://assets/characters/playerchar/move 5 brj-Sheet.png"
+dest_files=["res://.godot/imported/move 5 brj-Sheet.png-416ad61f7a68e74ef40f92ac66ee5dad.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

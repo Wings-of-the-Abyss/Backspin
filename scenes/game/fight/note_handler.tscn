@@ -3,16 +3,27 @@
 [ext_resource type="Script" path="res://scenes/game/fight/note_handler.gd" id="1_1ppch"]
 [ext_resource type="Texture2D" uid="uid://d4hgco1vlgjlk" path="res://assets/arrows/Arrowsgrey.png" id="2_veia4"]
 
-[node name="NoteHandler" type="Node" groups=["note-handler"]]
+[node name="NoteHandler" type="Control" groups=["note-handler"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_1ppch")
-
-[node name="Notecatcher" type="Sprite2D" parent="."]
-position = Vector2(165, 70)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_veia4")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="Notecatcher" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 21.0
+offset_right = 1379.0
+offset_bottom = 391.0
+scale = Vector2(0.296, 0.296)
+texture = ExtResource("2_veia4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

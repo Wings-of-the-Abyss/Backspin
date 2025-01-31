@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4hgco1vlgjlk"
-path.s3tc="res://.godot/imported/Arrowsgrey.png-9443ec409fd896346d8601c1f1d2b94e.s3tc.ctex"
+uid="uid://dyvs4n7c1y5if"
+path="res://.godot/imported/boss rush jam character animmove 3-Sheet.png-76ce71839d04ca9edfef1eb3811ad2ab.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/arrows/Arrowsgrey.png"
-dest_files=["res://.godot/imported/Arrowsgrey.png-9443ec409fd896346d8601c1f1d2b94e.s3tc.ctex"]
+source_file="res://assets/characters/playerchar/boss rush jam character animmove 3-Sheet.png"
+dest_files=["res://.godot/imported/boss rush jam character animmove 3-Sheet.png-76ce71839d04ca9edfef1eb3811ad2ab.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

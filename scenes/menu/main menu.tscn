@@ -50,18 +50,17 @@ script = ExtResource("1_w0fda")
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_mw15r")
 layout_mode = 0
-offset_left = -163.0
-offset_right = 477.0
-offset_bottom = 320.0
-scale = Vector2(2.2442, 2.2442)
+offset_right = 1920.0
+offset_bottom = 1097.0
 texture = ExtResource("1_8epr1")
-expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
-layout_mode = 0
-offset_top = -8.0
-offset_right = 640.0
-offset_bottom = 320.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("GradientTexture2D_qctco")
 
 [node name="Panel" type="Panel" parent="."]
@@ -72,10 +71,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -497.0
-offset_top = -683.0
-offset_right = -369.0
-offset_bottom = -451.0
+offset_left = -849.0
+offset_top = -983.0
+offset_right = -721.0
+offset_bottom = -751.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(2.75258, 2.75258)

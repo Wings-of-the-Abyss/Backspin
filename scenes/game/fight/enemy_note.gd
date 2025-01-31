@@ -10,7 +10,7 @@ const ARROW_LEFT = preload("res://assets/arrows/Arrowgreen_single.png")
 const ARROW_RIGHT = preload("res://assets/arrows/Arroworange_single.png")
 const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 
-var note_startY = 256.0
+var note_startY = 1200.0
 
 @export var enemy: bool = false
 
@@ -37,7 +37,7 @@ func note_cleanup() -> void:
 func add_note(type: StringName, id: Note) -> void:
 	var sprite = Sprite2D.new()
 	var texture
-	var startpos = Vector2(notecatcher.position.x, 256)
+	var startpos = Vector2(notecatcher.position.x, note_startY)
 	
 	match type:
 		&"left":
@@ -54,7 +54,7 @@ func add_note(type: StringName, id: Note) -> void:
 			startpos.x += -50
 	
 	if texture:
-		sprite.scale = Vector2.ONE*0.2
+		sprite.scale = Vector2.ONE*0.296
 		sprite.texture = texture
 		add_child(sprite)
 		sprite.position = startpos

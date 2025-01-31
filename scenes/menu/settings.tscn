@@ -46,18 +46,17 @@ script = ExtResource("1_rpx8o")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -96.0
-offset_top = -2.0
-offset_right = 1824.0
-offset_bottom = 1095.0
-scale = Vector2(0.661428, 0.661428)
+offset_right = 1920.0
+offset_bottom = 1097.0
 texture = ExtResource("1_c0oph")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
-layout_mode = 0
-offset_top = -8.0
-offset_right = 640.0
-offset_bottom = 320.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("GradientTexture2D_kr256")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

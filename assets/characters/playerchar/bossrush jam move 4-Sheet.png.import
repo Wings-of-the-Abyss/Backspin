@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4hgco1vlgjlk"
-path.s3tc="res://.godot/imported/Arrowsgrey.png-9443ec409fd896346d8601c1f1d2b94e.s3tc.ctex"
+uid="uid://dyj55cnxa2pjq"
+path="res://.godot/imported/bossrush jam move 4-Sheet.png-b4a579b9608acdac65201f3e0be121d9.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/arrows/Arrowsgrey.png"
-dest_files=["res://.godot/imported/Arrowsgrey.png-9443ec409fd896346d8601c1f1d2b94e.s3tc.ctex"]
+source_file="res://assets/characters/playerchar/bossrush jam move 4-Sheet.png"
+dest_files=["res://.godot/imported/bossrush jam move 4-Sheet.png-b4a579b9608acdac65201f3e0be121d9.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
