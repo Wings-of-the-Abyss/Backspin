@@ -4,7 +4,9 @@ var turn: bool = false
 var active_notes: Array[Note] = []
 var queue: Array[Move] = []
 
-var actionpoint_refresh: Array[StringName] = [
+var enemy_move: Move
+
+const actionpoint_refresh: Array[StringName] = [
 	&"left",
 	&"right",
 	&"up",
@@ -14,14 +16,19 @@ var actionpoint_refresh: Array[StringName] = [
 signal execute_moves
 signal execution_complete
 
+signal enemy_execution_complete
+
 signal player_turn_started
 signal enemy_turn_started
 
 var setup_complete: bool = false
 
+var note_handler
+var enemy_note
+
 func _ready():
-	while !setup_complete:
-		await get_tree().create_timer(0.01).timeout
+	note_handler = get_tree().get_first_node_in_group("note-handler")
+	enemy_note = get_tree().get_first_node_in_group("enemy-note")
 	turn_switch()
 
 ##Sequence of events for the Player's turn
@@ -36,15 +43,23 @@ func player_turn() -> void:
 
 ##Sequence of events for the enemy's turn
 func enemy_turn() -> void:
-	print("Enemy Turn")
+	enemy_turn_started.emit()
+	await enemy_pick_move()
+	enemy_execute_move()
+	await enemy_execution_complete
+	turn_switch()
 
 ##Turn switcher
 func turn_switch() -> void:
+	await get_tree().create_timer(3.0).timeout
 	if turn:
 		enemy_turn()
 	else:
 		player_turn()
 	turn = !turn
+
+func on_death() -> void:
+	print("Dead")
 
 #region Player Move Stuff
 func selection_complete() -> void:
@@ -80,4 +95,16 @@ func play_move(move: Move) -> void:
 
 #region Enemy Move stuff
 
+func enemy_pick_move():
+	var enemy = get_tree().get_first_node_in_group("enemy")
+	enemy_move = enemy.EnemyMoves.pick_random()
+
+func enemy_execute_move() -> void:
+	play_move(enemy_move)
+	for i in range(enemy_move.Notes.size()):
+		var newnote = Note.new()
+		newnote.assigned_input = enemy_move.Notes[i]
+		get_tree().get_first_node_in_group("enemy-note").add_note_inverse(enemy_move.Notes[i], newnote)
+		await get_tree().create_timer(enemy_move.Timings[i]).timeout
+	enemy_execution_complete.emit()
 #endregion

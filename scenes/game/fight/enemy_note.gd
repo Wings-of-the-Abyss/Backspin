@@ -15,29 +15,12 @@ var note_startY = 256.0
 @export var enemy: bool = false
 
 func _unhandled_input(_event):
-	if TurnManager.active_notes.is_empty(): return
+	if TurnManager.active_notes.is_empty() or TurnManager.turn: return
 	for N in TurnManager.active_notes:
-		var input = (
-			(Input.is_action_just_pressed("left") and N.assigned_input ==  &"left") or
-			(Input.is_action_just_pressed("up") and N.assigned_input ==  &"up") or
-			(Input.is_action_just_pressed("right") and N.assigned_input ==  &"right") or
-			(Input.is_action_just_pressed("down") and N.assigned_input ==  &"down")
-			)
+		if abs(N.time_window) <= 0.075:
+			FreedNotes.append(N)
+			FallingNotes.get(N).hide()
 		
-		var hype = 0
-		if input:
-			var poptime = abs(N.time_window)*10
-			if poptime < 1.0:
-				FreedNotes.append(N)
-				FallingNotes.get(N).hide()
-				hype = 30 * (1-poptime) 
-				print("Hit!")
-			else:
-				hype = -30
-				print("miss...")
-		
-		
-		if hype != 0: PlayerData.update_hype(hype)
 
 func _process(delta):
 	if FallingNotes.is_empty(): return
@@ -52,7 +35,8 @@ func _process(delta):
 func note_cleanup() -> void:
 	if FreedNotes.is_empty(): return
 	for FN in FreedNotes:
-		FallingNotes.get(FN).queue_free()
+		if FallingNotes.get(FN) != null:
+			FallingNotes.get(FN).queue_free()
 		FallingNotes.erase(FN)
 		TurnManager.active_notes.erase(FN)
 

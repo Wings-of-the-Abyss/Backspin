@@ -24,11 +24,15 @@ TurnManager="*res://autoloads/TurnManager.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=320
-window/stretch/mode="viewport"
+window/size/window_width_override=1080
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
 
 [global_group]
 
 note-handler=""
+enemy-note=""
+enemy=""
 
 [input]
 

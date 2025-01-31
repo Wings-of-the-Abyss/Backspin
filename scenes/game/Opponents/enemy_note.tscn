@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2bww1rtjyclw"]
+
+[ext_resource type="Script" path="res://scenes/game/fight/enemy_note.gd" id="1_rcqrp"]
+[ext_resource type="Texture2D" uid="uid://d4hgco1vlgjlk" path="res://assets/arrows/Arrowsgrey.png" id="2_guifo"]
+
+[node name="NoteHandler" type="Node" groups=["enemy-note"]]
+script = ExtResource("1_rcqrp")
+enemy = true
+
+[node name="Notecatcher" type="Sprite2D" parent="."]
+position = Vector2(556, 34)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_guifo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -11,7 +11,7 @@ var hand: Array[Move] = []
 func _ready():
 	randomize()
 	TurnManager.player_turn_started.connect(create_hand)
-	TurnManager.setup_complete = true
+	set_deck_visible(false)
 
 func create_hand() -> void:
 	var newhand: Array[Move] = []
