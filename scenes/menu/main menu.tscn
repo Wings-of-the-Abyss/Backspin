@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjlygdna7gbq3"]
+[gd_scene load_steps=15 format=3 uid="uid://bjlygdna7gbq3"]
 
 [ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_8epr1"]
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_w0fda"]
@@ -10,6 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://tbr2w71rtxs8" path="res://assets/ui/Collections_Button.png" id="6_n1jjc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mw15r"]
+shader = ExtResource("3_5d0x0")
+shader_parameter/zoom = 20.0
+shader_parameter/wave_crop = 0.0
+shader_parameter/brightness = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/iterations = 5.0
+shader_parameter/freq_start = 20.0
+shader_parameter/freq_coeff = 1.0
 
 [sub_resource type="Gradient" id="Gradient_1761r"]
 colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
@@ -17,6 +25,13 @@ colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qctco"]
 gradient = SubResource("Gradient_1761r")
 fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2evey"]
+bg_color = Color(0.26032, 0.000832036, 0.547833, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_humsc"]
 shader = ExtResource("3_5d0x0")
@@ -29,7 +44,7 @@ shader_parameter/freq_start = 20.0
 shader_parameter/freq_coeff = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yk2l"]
-bg_color = Color(0.174028, 0.174028, 0.174028, 1)
+bg_color = Color(0, 0, 0.254902, 1)
 border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -62,6 +77,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_qctco")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 52.0
+offset_right = 172.0
+offset_bottom = 294.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2evey")
 
 [node name="Panel" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_humsc")
