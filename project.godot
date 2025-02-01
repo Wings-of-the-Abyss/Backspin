@@ -30,6 +30,7 @@ window/stretch/mode="viewport"
 [editor]
 
 movie_writer/movie_file="C:/Users/heito/OneDrive/Documentos/Projects/backspin.avi"
+export/convert_text_resources_to_binary=false
 
 [global_group]
 

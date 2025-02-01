@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cbx4ekddo1dpc"]
+[gd_scene load_steps=61 format=3 uid="uid://cbx4ekddo1dpc"]
 
 [ext_resource type="PackedScene" uid="uid://bholuvfuiblp1" path="res://scenes/game/fight/note_handler.tscn" id="1_ymu70"]
 [ext_resource type="PackedScene" uid="uid://dlla330gdcucj" path="res://scenes/game/fight/fight_ui/move_deck.tscn" id="2_vtpkq"]
@@ -9,16 +9,19 @@
 [ext_resource type="Texture2D" uid="uid://cgr8bg3m2jw2" path="res://assets/characters/playerchar/idle animation character sprite.png" id="6_d67uy"]
 [ext_resource type="Texture2D" uid="uid://d1tisnlpwjiyb" path="res://assets/ui/HP.png" id="6_rrr83"]
 [ext_resource type="Texture2D" uid="uid://c2swg8fmeies0" path="res://assets/characters/playerchar/boss character move 2 step-Sheet.png" id="7_a32pi"]
-[ext_resource type="Texture2D" uid="uid://dkjibymkil15s" path="res://assets/ui/Hype.png" id="7_v44ek"]
 [ext_resource type="Texture2D" uid="uid://dxme31jjm1ndy" path="res://assets/ui/HP_progress.png" id="7_vfpnk"]
 [ext_resource type="Texture2D" uid="uid://djon6pveqkj7f" path="res://assets/characters/playerchar/move 5 brj-Sheet.png" id="7_yokks"]
 [ext_resource type="Texture2D" uid="uid://dyj55cnxa2pjq" path="res://assets/characters/playerchar/bossrush jam move 4-Sheet.png" id="8_2ppmh"]
+[ext_resource type="Script" path="res://scenes/game/ui/enemy_hp.gd" id="8_7aaci"]
 [ext_resource type="Texture2D" uid="uid://dyvs4n7c1y5if" path="res://assets/characters/playerchar/boss rush jam character animmove 3-Sheet.png" id="8_xvbhf"]
 [ext_resource type="Script" path="res://scenes/game/ui/Scoretext.gd" id="9_mlaju"]
 [ext_resource type="Texture2D" uid="uid://3rvxoslkb28r" path="res://assets/characters/playerchar/bossrush jam character spin.png" id="9_rmgn5"]
 [ext_resource type="Script" path="res://scenes/game/characterstuff/player_sprite.gd" id="11_3xchw"]
 [ext_resource type="Texture2D" uid="uid://qipp1ytunt6f" path="res://assets/characters/playerchar/bossrush character death anim-Sheet.png" id="11_rhiqe"]
 [ext_resource type="PackedScene" uid="uid://dhfv43lgecgnq" path="res://scenes/game/Opponents/enemy_1.tscn" id="17_wwwsg"]
+[ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="19_nsjc2"]
+[ext_resource type="Script" path="res://scenes/game/music_player.gd" id="20_rywlr"]
+[ext_resource type="Script" path="res://scenes/game/characterstuff/boss_switch.gd" id="20_vhqnc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i1h8k"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,6 +34,33 @@ sky_material = SubResource("ProceduralSkyMaterial_i1h8k")
 background_mode = 2
 sky = SubResource("Sky_3u7ml")
 tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_h1jt8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_qe2ut"]
 resource_name = "fade_in"
@@ -58,33 +88,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_h1jt8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gcr13"]
@@ -324,10 +327,34 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MusicPlayer:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rc5rw"]
 resource_name = "die"
-length = 0.500008
+length = 1.50001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -348,7 +375,7 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0833333, 0.166667),
+"times": PackedFloat32Array(0.666666, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(11, 21.913, -7), Vector3(53, 21.913, -7)]
@@ -360,7 +387,43 @@ tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MusicPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -540,15 +603,59 @@ _data = {
 "upHit": SubResource("Animation_40ebn")
 }
 
+[sub_resource type="Animation" id="Animation_byfml"]
+resource_name = "Remove_dead"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-9, 21.9041, -7), Vector3(-9, 21.9041, -7), Vector3(-66.9841, 21.9041, -7)]
+}
+
+[sub_resource type="Animation" id="Animation_kahd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-9, 21.9041, -7)]
+}
+
+[sub_resource type="Animation" id="Animation_g63js"]
+resource_name = "add_new"
+step = 0.0833333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbi2g"]
+_data = {
+"RESET": SubResource("Animation_kahd4"),
+"Remove_dead": SubResource("Animation_byfml"),
+"add_new": SubResource("Animation_g63js")
+}
+
 [node name="Game" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nxfhv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.231648, 0.443102, 0, 0.886204, 0.463296, -0.5, 0.401226, -0.767475, 0, 0, 0)
+transform = Transform3D(-0.821866, -0.263931, 0.504854, 8.91201e-09, 0.886204, 0.463296, -0.569681, 0.380767, -0.72834, 0, 0, 0)
 light_color = Color(0.333333, 0, 0.619608, 1)
+light_energy = 1.5
 shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -575,7 +682,6 @@ size_flags_horizontal = 4
 texture = ExtResource("5_34e5e")
 
 [node name="EnemyHp" type="TextureProgressBar" parent="CanvasLayer"]
-modulate = Color(1, 1, 0, 1)
 offset_left = 434.0
 offset_top = 31.0
 offset_right = 498.0
@@ -585,15 +691,7 @@ value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("6_rrr83")
 texture_progress = ExtResource("7_vfpnk")
-
-[node name="EnemyHype" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 388.0
-offset_top = 27.0
-offset_right = 452.0
-offset_bottom = 91.0
-scale = Vector2(-0.5, 0.5)
-nine_patch_stretch = true
-texture_under = ExtResource("7_v44ek")
+script = ExtResource("8_7aaci")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
@@ -638,10 +736,20 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerSprite"]
+stream = ExtResource("19_nsjc2")
+bus = &"SFX"
+
 [node name="BossSwitch" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nbi2g")
+}
+script = ExtResource("20_vhqnc")
 
 [node name="Enemy1" parent="." instance=ExtResource("17_wwwsg")]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -11, 21.913, -7)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -9, 21.9041, -7)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
 bus = &"Songs"
+script = ExtResource("20_rywlr")

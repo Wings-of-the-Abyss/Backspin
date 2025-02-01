@@ -22,10 +22,23 @@ signal enemy_execution_complete
 signal player_turn_started
 signal enemy_turn_started
 
-var setup_complete: bool = false
-
 var note_handler
 var enemy_note
+
+signal boss_down
+var BossIndex = 0
+
+var dead = false
+
+var ActiveBoss:
+	set(boss):
+		while !enemy_note:
+			enemy_note = get_tree().get_first_node_in_group("enemy-note")
+			await get_tree().create_timer(0.01).timeout
+		enemy_note.move.connect(boss.EnemyNote)
+		boss.downed.connect(switch_boss)
+		ActiveBoss = boss
+		
 
 func _ready():
 	note_handler = get_tree().get_first_node_in_group("note-handler")
@@ -60,9 +73,16 @@ func turn_switch() -> void:
 	turn = !turn
 
 func on_death() -> void:
+	if dead: return
+	dead = true
 	get_tree().get_first_node_in_group("player").die()
-	await get_tree().create_timer(1.0).timeout
-	get_tree().quit()
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://scenes/menu/main menu.tscn")
+
+func switch_boss() -> void:
+	BossIndex += 1
+	boss_down.emit()
+	
 
 #region Player Move Stuff
 func selection_complete() -> void:

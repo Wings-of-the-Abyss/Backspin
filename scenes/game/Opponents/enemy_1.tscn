@@ -1,9 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhfv43lgecgnq"]
+[gd_scene load_steps=37 format=3 uid="uid://dhfv43lgecgnq"]
 
 [ext_resource type="Texture2D" uid="uid://cn2qqmn4sm7v6" path="res://assets/characters/Grey minion 1/Idle animation for grey minion 1/idle animation for gray 1.png" id="1_70y0v"]
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="1_jpg0i"]
+[ext_resource type="Texture2D" uid="uid://c4qashh67ykj4" path="res://assets/characters/Grey minion 1/Grey minion 1 death/minion 1 death anim-Sheet.png" id="2_p5ev3"]
+[ext_resource type="Texture2D" uid="uid://cu8dcmyglkeec" path="res://assets/characters/Grey minion 1/Grey minion move 2/grey minion move 2(crouch)-Sheet.png" id="3_540gf"]
 [ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="3_mtg8m"]
+[ext_resource type="Texture2D" uid="uid://bpl8qk2rxoffm" path="res://assets/characters/Grey minion 1/grey minion move 1/grey minion move 1-Sheet.png" id="3_wk2ag"]
 [ext_resource type="Resource" uid="uid://e5vo7i5tay64" path="res://scenes/game/Moves/enemymoves/enemymove.tres" id="4_cyr3l"]
+[ext_resource type="Texture2D" uid="uid://dgcu1gjut1ei2" path="res://assets/characters/Grey minion 1/Grey minion 1 move 3/grey minion 1 move 3-Sheet.png" id="4_d8igh"]
+[ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="9_xyow5"]
+[ext_resource type="Resource" uid="uid://dhhm7a2biwfww" path="res://scenes/game/Moves/enemymoves/enemymove3.tres" id="9_yyuv3"]
+[ext_resource type="Resource" uid="uid://bw5gw4gieujs3" path="res://scenes/game/Moves/enemymoves/enemymove4.tres" id="10_23s8i"]
+[ext_resource type="Resource" uid="uid://b4u3nxcugtah0" path="res://scenes/game/Moves/enemymoves/enemymove2.tres" id="11_ymvvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3ujj"]
 atlas = ExtResource("1_70y0v")
@@ -45,6 +53,25 @@ region = Rect2(1200, 0, 150, 150)
 atlas = ExtResource("1_70y0v")
 region = Rect2(1350, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7stov"]
+atlas = ExtResource("2_p5ev3")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbbel"]
+atlas = ExtResource("3_wk2ag")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvt4l"]
+atlas = ExtResource("4_d8igh")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqe32"]
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wydgx"]
+atlas = ExtResource("3_540gf")
+region = Rect2(0, 0, 150, 150)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cspdk"]
 animations = [{
 "frames": [{
@@ -81,6 +108,46 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7stov")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbbel")
+}],
+"loop": true,
+"name": &"downhit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvt4l")
+}],
+"loop": true,
+"name": &"lefthit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqe32")
+}],
+"loop": true,
+"name": &"righthit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wydgx")
+}],
+"loop": true,
+"name": &"uphit",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_ejyyn"]
@@ -96,6 +163,99 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8efjj"]
+resource_name = "die"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_12j6e"]
+resource_name = "downHit"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"downhit"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,22 +300,130 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_j1js1"]
+resource_name = "leftHit"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"lefthit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4gjq8"]
+resource_name = "rightHit"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"lefthit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mff14"]
+resource_name = "upHit"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"lefthit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6v0p"]
 _data = {
 "RESET": SubResource("Animation_ejyyn"),
-"idle": SubResource("Animation_ij6u5")
+"die": SubResource("Animation_8efjj"),
+"downHit": SubResource("Animation_12j6e"),
+"idle": SubResource("Animation_ij6u5"),
+"leftHit": SubResource("Animation_j1js1"),
+"rightHit": SubResource("Animation_4gjq8"),
+"upHit": SubResource("Animation_mff14")
 }
 
 [node name="Enemy1" type="AnimatedSprite3D" groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295547, 0.108566, 0.0639776)
 flip_h = true
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("1_jpg0i")
-EnemyMoves = Array[ExtResource("3_mtg8m")]([ExtResource("4_cyr3l")])
+EnemyMoves = Array[ExtResource("3_mtg8m")]([ExtResource("4_cyr3l"), ExtResource("9_yyuv3"), ExtResource("10_23s8i"), ExtResource("11_ymvvu")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_s6v0p")
 }
 autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xyow5")

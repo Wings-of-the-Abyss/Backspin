@@ -10,20 +10,23 @@ const ARROW_LEFT = preload("res://assets/arrows/Arrowgreen_single.png")
 const ARROW_RIGHT = preload("res://assets/arrows/Arroworange_single.png")
 const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 
-var note_startY = 1200.0
+var note_startY = 1024.0
 
-@export var enemy: bool = false
+signal move(n: StringName)
 
 func _process(delta):
 	if FallingNotes.is_empty(): return
 	
 	for N in FallingNotes.keys():
-		if is_equal_approx(N.time_window, 0.0):
+		if abs(N.time_window) < 0.05:
 			FreedNotes.append(N)
 			FallingNotes.get(N).hide()
+			move.emit(N.assigned_input)
 		N.time_window -= delta/3
 		var node = FallingNotes.get(N)
 		node.position.y = (note_startY*N.time_window/2)+notecatcher.position.y
+	
+	note_cleanup()
 
 func note_cleanup() -> void:
 	if FreedNotes.is_empty(): return
@@ -70,6 +73,3 @@ func add_note_inverse(note_type: StringName, note: Note) -> void:
 			add_note(&"left", note)
 		&"down":
 			add_note(&"up", note)
-
-func _on_timer_timeout():
-	note_cleanup()

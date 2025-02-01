@@ -20,4 +20,7 @@ func _on_music_value_changed(value):
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("exit"):
-		get_tree().change_scene_to_file("res://scenes/menu/main menu.tscn")
+		exit()
+
+func exit():
+	get_tree().change_scene_to_file("res://scenes/menu/main menu.tscn")

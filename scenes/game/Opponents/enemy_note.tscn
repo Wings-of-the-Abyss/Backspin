@@ -11,11 +11,6 @@ anchor_right = 1.0
 grow_horizontal = 0
 mouse_filter = 2
 script = ExtResource("1_rcqrp")
-enemy = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
 
 [node name="Notecatcher" type="TextureRect" parent="."]
 layout_mode = 0
@@ -27,5 +22,3 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_guifo")
 stretch_mode = 2
 flip_h = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
