@@ -21,6 +21,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	if hand.is_empty():
 		create_hand()
+	show()
 
 func create_hand() -> void:
 	var newhand: Array[Move] = []

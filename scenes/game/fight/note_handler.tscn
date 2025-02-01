@@ -48,15 +48,19 @@ stream = ExtResource("6_0vjgs")
 bus = &"SFX"
 
 [node name="Up" parent="." instance=ExtResource("7_u0ckf")]
+visible = false
 position = Vector2(47, 40)
 
 [node name="Down" parent="." instance=ExtResource("7_u0ckf")]
+visible = false
 position = Vector2(76, 40)
 
 [node name="Left" parent="." instance=ExtResource("7_u0ckf")]
+visible = false
 position = Vector2(110, 40)
 
 [node name="Right" parent="." instance=ExtResource("7_u0ckf")]
+visible = false
 position = Vector2(149, 40)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

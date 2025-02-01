@@ -539,6 +539,7 @@ shadow_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MoveDeck" parent="CanvasLayer" instance=ExtResource("2_vtpkq")]
+visible = false
 
 [node name="Health" parent="CanvasLayer" instance=ExtResource("3_yyhnl")]
 
