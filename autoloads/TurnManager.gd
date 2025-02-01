@@ -4,6 +4,7 @@ var turn: bool = false
 var active_notes: Array[Note] = []
 var queue: Array[Move] = []
 
+var enemymove_index = 0
 var enemy_move: Move
 
 const actionpoint_refresh: Array[StringName] = [
@@ -100,7 +101,9 @@ func play_move(move: Move) -> void:
 
 func enemy_pick_move():
 	var enemy = get_tree().get_first_node_in_group("enemy")
-	enemy_move = enemy.EnemyMoves.pick_random()
+	if enemymove_index >= enemy.EnemyMoves.size(): enemymove_index = 0
+	enemy_move = enemy.EnemyMoves[enemymove_index]
+	enemymove_index += 1
 
 func enemy_execute_move() -> void:
 	play_move(enemy_move)

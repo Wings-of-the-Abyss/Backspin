@@ -1,14 +1,157 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhfv43lgecgnq"]
+[gd_scene load_steps=17 format=3 uid="uid://dhfv43lgecgnq"]
 
+[ext_resource type="Texture2D" uid="uid://cn2qqmn4sm7v6" path="res://assets/characters/Grey minion 1/Idle animation for grey minion 1/idle animation for gray 1.png" id="1_70y0v"]
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="1_jpg0i"]
-[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="2_n3370"]
-[ext_resource type="Resource" uid="uid://c4xiuuva7yqtu" path="res://scenes/game/Moves/Example.tres" id="3_duufj"]
 
-[node name="Enemy1" type="Node3D" groups=["enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ujj"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htsg2"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52omo"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7obvf"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yhck"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2558"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cdvv"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcr3h"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhcgs"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(1200, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuf4j"]
+atlas = ExtResource("1_70y0v")
+region = Rect2(1350, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cspdk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3ujj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htsg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52omo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7obvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yhck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2558")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cdvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcr3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhcgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuf4j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ij6u5"]
+resource_name = "idle"
+length = 0.750008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.23517e-08, 0.0833334, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ejyyn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6v0p"]
+_data = {
+"RESET": SubResource("Animation_ejyyn"),
+"idle": SubResource("Animation_ij6u5")
+}
+
+[node name="Enemy1" type="AnimatedSprite3D" groups=["enemy"]]
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("1_jpg0i")
-EnemyMoves = Array[ExtResource("2_n3370")]([ExtResource("3_duufj")])
-
-[node name="Sprite2D" type="Sprite3D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s6v0p")
+}
+autoplay = "idle"

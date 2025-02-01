@@ -1,15 +1,22 @@
-[gd_scene load_steps=34 format=3 uid="uid://cbx4ekddo1dpc"]
+[gd_scene load_steps=47 format=3 uid="uid://cbx4ekddo1dpc"]
 
 [ext_resource type="PackedScene" uid="uid://bholuvfuiblp1" path="res://scenes/game/fight/note_handler.tscn" id="1_ymu70"]
 [ext_resource type="PackedScene" uid="uid://dlla330gdcucj" path="res://scenes/game/fight/fight_ui/move_deck.tscn" id="2_vtpkq"]
 [ext_resource type="PackedScene" uid="uid://d1csfjfy2em78" path="res://scenes/game/ui/health.tscn" id="3_yyhnl"]
 [ext_resource type="PackedScene" uid="uid://duxpa1t1m1ayx" path="res://assets/gamebackground/model.gltf" id="4_6o2bc"]
 [ext_resource type="PackedScene" uid="uid://b2bww1rtjyclw" path="res://scenes/game/Opponents/enemy_note.tscn" id="4_fgibs"]
+[ext_resource type="Texture2D" uid="uid://diqpdn4oej51d" path="res://assets/ui/VS.png" id="5_34e5e"]
 [ext_resource type="Texture2D" uid="uid://cgr8bg3m2jw2" path="res://assets/characters/playerchar/idle animation character sprite.png" id="6_d67uy"]
+[ext_resource type="Texture2D" uid="uid://d1tisnlpwjiyb" path="res://assets/ui/HP.png" id="6_rrr83"]
 [ext_resource type="Texture2D" uid="uid://c2swg8fmeies0" path="res://assets/characters/playerchar/boss character move 2 step-Sheet.png" id="7_a32pi"]
+[ext_resource type="Texture2D" uid="uid://dkjibymkil15s" path="res://assets/ui/Hype.png" id="7_v44ek"]
+[ext_resource type="Texture2D" uid="uid://dxme31jjm1ndy" path="res://assets/ui/HP_progress.png" id="7_vfpnk"]
 [ext_resource type="Texture2D" uid="uid://djon6pveqkj7f" path="res://assets/characters/playerchar/move 5 brj-Sheet.png" id="7_yokks"]
+[ext_resource type="Texture2D" uid="uid://dyj55cnxa2pjq" path="res://assets/characters/playerchar/bossrush jam move 4-Sheet.png" id="8_2ppmh"]
 [ext_resource type="Texture2D" uid="uid://dyvs4n7c1y5if" path="res://assets/characters/playerchar/boss rush jam character animmove 3-Sheet.png" id="8_xvbhf"]
 [ext_resource type="Texture2D" uid="uid://3rvxoslkb28r" path="res://assets/characters/playerchar/bossrush jam character spin.png" id="9_rmgn5"]
+[ext_resource type="Script" path="res://scenes/game/characterstuff/player_sprite.gd" id="11_3xchw"]
+[ext_resource type="PackedScene" uid="uid://dhfv43lgecgnq" path="res://scenes/game/Opponents/enemy_1.tscn" id="17_wwwsg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i1h8k"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -63,21 +70,33 @@ region = Rect2(1200, 0, 150, 150)
 atlas = ExtResource("6_d67uy")
 region = Rect2(1350, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4s57s"]
-atlas = ExtResource("7_a32pi")
-region = Rect2(0, 0, 150, 150)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eodsf"]
+atlas = ExtResource("8_2ppmh")
+region = Rect2(150, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nftmx"]
-atlas = ExtResource("8_xvbhf")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxnhn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v7se"]
 atlas = ExtResource("9_rmgn5")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7qve"]
+atlas = ExtResource("7_yokks")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stdek"]
+atlas = ExtResource("7_a32pi")
 region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2g7eh"]
 atlas = ExtResource("7_yokks")
 region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eb83"]
+atlas = ExtResource("8_xvbhf")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcs6s"]
+atlas = ExtResource("8_2ppmh")
+region = Rect2(1350, 0, 150, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6i1wx"]
 animations = [{
@@ -118,16 +137,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4s57s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nftmx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sxnhn")
+"texture": SubResource("AtlasTexture_eodsf")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"downhit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v7se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7qve")
+}],
+"loop": true,
+"name": &"hype",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stdek")
+}],
+"loop": true,
+"name": &"lefthit",
 "speed": 4.0
 }, {
 "frames": [{
@@ -136,6 +168,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"pose1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eb83")
+}],
+"loop": true,
+"name": &"righthit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcs6s")
+}],
+"loop": true,
+"name": &"uphit",
 "speed": 5.0
 }]
 
@@ -178,6 +226,64 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_7fexl"]
+resource_name = "downHit"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"downhit", &"default"]
+}
+
+[sub_resource type="Animation" id="Animation_riyg2"]
+resource_name = "hype"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hype"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.26573, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_n0lib"]
 resource_name = "idle"
 loop_mode = 1
@@ -207,70 +313,78 @@ tracks/1/keys = {
 "values": [0, 1, 4, 5, 6, 7, 9]
 }
 
-[sub_resource type="Animation" id="Animation_og8qt"]
-resource_name = "return"
+[sub_resource type="Animation" id="Animation_1qlc7"]
+resource_name = "leftHit"
 length = 0.250008
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_k647s"]
-resource_name = "spin"
-length = 0.666675
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.458481),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 6.26573, 0)]
+"update": 1,
+"values": [&"lefthit", &"default"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
+"times": PackedFloat32Array(0, 0.0833333, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [&"new_animation", &"pose1", &"new_animation"]
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2.56738, 0), Vector3(0, 0, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.5, 0.583333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+
+[sub_resource type="Animation" id="Animation_tsgx2"]
+resource_name = "rightHit"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 1, 0]
+"values": [&"righthit", &"default"]
+}
+
+[sub_resource type="Animation" id="Animation_40ebn"]
+resource_name = "upHit"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"uphit", &"default"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lglq5"]
 _data = {
 "RESET": SubResource("Animation_30f0r"),
+"downHit": SubResource("Animation_7fexl"),
+"hype": SubResource("Animation_riyg2"),
 "idle": SubResource("Animation_n0lib"),
-"return": SubResource("Animation_og8qt"),
-"spin": SubResource("Animation_k647s")
+"leftHit": SubResource("Animation_1qlc7"),
+"rightHit": SubResource("Animation_tsgx2"),
+"upHit": SubResource("Animation_40ebn")
 }
 
 [node name="Game" type="Node"]
@@ -293,21 +407,59 @@ shadow_enabled = true
 
 [node name="EnemyNoteHandler" parent="CanvasLayer" instance=ExtResource("4_fgibs")]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.0
+offset_right = 1741.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+scale = Vector2(0.202594, 0.202594)
+size_flags_horizontal = 4
+texture = ExtResource("5_34e5e")
+
+[node name="EnemyHp" type="TextureProgressBar" parent="CanvasLayer"]
+modulate = Color(1, 1, 0, 1)
+offset_left = 1460.0
+offset_top = 24.0
+offset_right = 1524.0
+offset_bottom = 88.0
+scale = Vector2(-2, 2)
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_rrr83")
+texture_progress = ExtResource("7_vfpnk")
+
+[node name="EnemyHype" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 1304.0
+offset_top = 27.0
+offset_right = 1368.0
+offset_bottom = 91.0
+scale = Vector2(-2, 2)
+nine_patch_stretch = true
+texture_under = ExtResource("7_v44ek")
+
 [node name="blockbench_export" parent="." instance=ExtResource("4_6o2bc")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -7.62898e-10, 8.74194e-08, 0, 0.999962, 0.00872654, -8.74228e-08, 0.00872654, -0.999962, 0.394866, 20.6461, -29.4437)
 current = true
 
-[node name="PlayerSprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 14, 12.186, -7)
+[node name="PlayerSprite" type="AnimatedSprite3D" parent="." groups=["player"]]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 11, 12.186, -7)
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_6i1wx")
+script = ExtResource("11_3xchw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
+[node name="PlayerAnim" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_lglq5")
 }
 autoplay = "idle"
-next/return = &"return"
+
+[node name="BossSwitch" type="AnimationPlayer" parent="."]
+
+[node name="Enemy1" parent="." instance=ExtResource("17_wwwsg")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -11, 11.925, -7)
