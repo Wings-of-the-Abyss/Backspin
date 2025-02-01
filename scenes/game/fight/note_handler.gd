@@ -35,11 +35,6 @@ func _ready():
 	down.restart()
 	await down.finished
 	down.show()
-	
-
-
-
-
 
 func _physics_process(delta):
 	if TurnManager.active_notes.is_empty(): return

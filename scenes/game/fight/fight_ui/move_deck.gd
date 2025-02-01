@@ -13,7 +13,7 @@ const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 @onready var move_4 = $HBoxContainer/move4
 @onready var h_box_container = $HBoxContainer
 @onready var animation_player = $AnimationPlayer
-@onready var APdisplay = $HBoxContainer/HBoxContainer2
+@onready var APdisplay = $HBoxContainer/Control/HBoxContainer2
 
 func _ready():
 	randomize()
