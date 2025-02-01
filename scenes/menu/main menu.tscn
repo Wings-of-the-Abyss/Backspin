@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjlygdna7gbq3"]
+[gd_scene load_steps=19 format=3 uid="uid://bjlygdna7gbq3"]
 
 [ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_8epr1"]
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_w0fda"]
@@ -38,7 +38,7 @@ shader = ExtResource("3_5d0x0")
 shader_parameter/zoom = 1.0
 shader_parameter/wave_crop = 0.0
 shader_parameter/brightness = 0.3
-shader_parameter/speed = 2.0
+shader_parameter/speed = 4.0
 shader_parameter/iterations = 5.0
 shader_parameter/freq_start = 20.0
 shader_parameter/freq_coeff = 1.0
@@ -52,6 +52,94 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(0, 2)
+
+[sub_resource type="Animation" id="Animation_81pro"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_786cb"]
+resource_name = "fade-in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xfglm"]
+resource_name = "fade-out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1t2lp"]
+_data = {
+"RESET": SubResource("Animation_81pro"),
+"fade-in": SubResource("Animation_786cb"),
+"fade-out": SubResource("Animation_xfglm")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -144,6 +232,20 @@ stretch_mode = 0
 stream = ExtResource("4_ebqsn")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1t2lp")
+}
+autoplay = "fade-in"
+
+[node name="ColorRect" type="ColorRect" parent="transition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="mouse_entered" from="Panel/VBoxContainer/play" to="." method="_on_buttons_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/play" to="." method="_on_play_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crkwqxkulmmf1"]
+[gd_scene load_steps=14 format=3 uid="uid://crkwqxkulmmf1"]
 
 [ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_c0oph"]
 [ext_resource type="Script" path="res://scenes/menu/settings_ui.gd" id="1_rpx8o"]
@@ -34,6 +34,45 @@ shadow_size = 2
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8w8x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6asgq"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.899169, 0.131029, 0.557456, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.786588, 0, 0.200164, 1)
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jglwg"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.899169, 0.131029, 0.557456, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.786588, 0, 0.200164, 1)
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bexl"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.899169, 0.131029, 0.557456, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.786588, 0, 0.200164, 1)
+shadow_size = 16
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -111,6 +150,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="MasterVolume" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -126,6 +166,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/grabber = ExtResource("3_cw5l8")
 theme_override_icons/grabber_highlight = ExtResource("3_cw5l8")
+theme_override_styles/slider = SubResource("StyleBoxFlat_6asgq")
 max_value = 1.0
 step = 0.01
 value = 0.65
@@ -144,6 +185,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/grabber = ExtResource("3_cw5l8")
 theme_override_icons/grabber_highlight = ExtResource("3_cw5l8")
+theme_override_styles/slider = SubResource("StyleBoxFlat_jglwg")
 max_value = 1.0
 step = 0.01
 value = 0.65
@@ -162,6 +204,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/grabber = ExtResource("3_cw5l8")
 theme_override_icons/grabber_highlight = ExtResource("3_cw5l8")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7bexl")
 max_value = 1.0
 step = 0.01
 value = 0.65
