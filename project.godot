@@ -36,6 +36,7 @@ movie_writer/movie_file="C:/Users/heito/OneDrive/Documentos/Projects/backspin.av
 note-handler=""
 enemy-note=""
 enemy=""
+player=""
 
 [input]
 

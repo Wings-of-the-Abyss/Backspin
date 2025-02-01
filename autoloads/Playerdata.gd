@@ -23,7 +23,8 @@ func update_hype(amount: int):
 	Hype = max(0, Hype+amount)
 	hype_updated.emit()
 	if Hype >= 100:
-		HP = min(HP + 25, 100)
+		get_tree().get_first_node_in_group("player").hypehit()
+		HP = 100
 		Hype = 0
 
 func deal_damage(amount: int) -> void:
