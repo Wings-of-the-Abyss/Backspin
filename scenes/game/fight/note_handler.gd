@@ -27,7 +27,7 @@ func _unhandled_input(_event):
 		var hype: int = 0
 		if input:
 			var poptime = abs(N.time_window)
-			if poptime*100 < 10.0:
+			if poptime*100 < 20.0:
 				get_tree().get_first_node_in_group("player").NoteHit(N.assigned_input)
 				FreedNotes.append(N)
 				FallingNotes.get(N).hide()

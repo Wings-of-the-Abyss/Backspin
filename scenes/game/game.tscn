@@ -447,7 +447,7 @@ transform = Transform3D(-1, -7.62898e-10, 8.74194e-08, 0, 0.999962, 0.00872654, 
 current = true
 
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="." groups=["player"]]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 11, 12.186, -7)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 11, 21.913, -7)
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_6i1wx")
@@ -462,4 +462,4 @@ autoplay = "idle"
 [node name="BossSwitch" type="AnimationPlayer" parent="."]
 
 [node name="Enemy1" parent="." instance=ExtResource("17_wwwsg")]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -11, 11.925, -7)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -11, 21.913, -7)

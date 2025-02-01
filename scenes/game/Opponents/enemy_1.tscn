@@ -146,6 +146,7 @@ _data = {
 
 [node name="Enemy1" type="AnimatedSprite3D" groups=["enemy"]]
 flip_h = true
+alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("1_jpg0i")
