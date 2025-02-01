@@ -5,6 +5,10 @@ extends Node
 @onready var notehit_down = $NotehitDown
 @onready var notehit_left = $NotehitLeft
 @onready var notehit_right = $NotehitRight
+@onready var up = $Up
+@onready var down = $Down
+@onready var left = $Left
+@onready var right = $Right
 
 var FallingNotes: Dictionary = {}
 var FreedNotes: Array[Note] = []
@@ -14,13 +18,20 @@ const ARROW_LEFT = preload("res://assets/arrows/Arrowgreen_single.png")
 const ARROW_RIGHT = preload("res://assets/arrows/Arroworange_single.png")
 const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 
-var note_startY = 1200.0
+var note_startY = 1024.0
 
 @export var enemy: bool = false
 
-func _unhandled_input(_event):
+func _ready():
+	up.restart()
+	left.restart()
+	right.restart()
+	down.restart()
+
+func _physics_process(delta):
 	if TurnManager.active_notes.is_empty(): return
 	for N in FallingNotes.keys():
+		if N.time_window > 0.5: continue
 		var input = (
 			(Input.is_action_just_pressed("left") and N.assigned_input ==  &"left") or
 			(Input.is_action_just_pressed("up") and N.assigned_input ==  &"up") or
@@ -31,7 +42,7 @@ func _unhandled_input(_event):
 		var hype: int = 0
 		if input:
 			var poptime = abs(N.time_window)
-			if poptime*100 < 20.0:
+			if poptime*100 < 10.0:
 				get_tree().get_first_node_in_group("player").NoteHit(N.assigned_input)
 				FreedNotes.append(N)
 				FallingNotes.get(N).hide()
@@ -45,7 +56,9 @@ func _unhandled_input(_event):
 					PlayerData.deal_damage(10)
 		
 		
-		if hype != 0: PlayerData.update_hype(hype)
+		if hype != 0: 
+			PlayerData.update_hype(hype)
+			return
 
 func _process(delta):
 	if FallingNotes.is_empty(): return
@@ -56,9 +69,9 @@ func _process(delta):
 			if !TurnManager.turn:
 				PlayerData.deal_damage(10)
 			continue
-		N.time_window -= delta
+		N.time_window -= delta/3
 		var node = FallingNotes.get(N)
-		node.position.y = (note_startY*N.time_window/2)+notecatcher.position.y
+		node.position.y = lerpf(notecatcher.position.y, note_startY, N.time_window)
 
 func note_cleanup() -> void:
 	if FreedNotes.is_empty(): return
@@ -101,9 +114,13 @@ func hit_audio(type: StringName) -> void:
 	match type:
 		&"left":
 			notehit_left.play()
+			left.restart()
 		&"up":
 			notehit_up.play()
+			up.restart()
 		&"right":
 			notehit_right.play()
+			right.restart()
 		&"down":
 			notehit_down.play()
+			down.restart()

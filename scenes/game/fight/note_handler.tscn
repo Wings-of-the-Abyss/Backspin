@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bholuvfuiblp1"]
+[gd_scene load_steps=8 format=3 uid="uid://bholuvfuiblp1"]
 
 [ext_resource type="Script" path="res://scenes/game/fight/note_handler.gd" id="1_1ppch"]
 [ext_resource type="Texture2D" uid="uid://d4hgco1vlgjlk" path="res://assets/arrows/Arrowsgrey.png" id="2_veia4"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://xt2wiru7p6ks" path="res://assets/sfx/Vital #6 (consolidated) (consolidated).wav" id="4_cbt1h"]
 [ext_resource type="AudioStream" uid="uid://brocuojjyhkpt" path="res://assets/sfx/Vital #7 (consolidated) (consolidated).wav" id="5_ik288"]
 [ext_resource type="AudioStream" uid="uid://dedwfg7y57ys0" path="res://assets/sfx/Vital #8 (consolidated) (consolidated).wav" id="6_0vjgs"]
+[ext_resource type="PackedScene" uid="uid://b0bathks7p7ei" path="res://scenes/vfx/hit_vfx.tscn" id="7_u0ckf"]
 
 [node name="NoteHandler" type="Control" groups=["note-handler"]]
 layout_mode = 3
@@ -45,5 +46,17 @@ bus = &"SFX"
 [node name="NotehitRight" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0vjgs")
 bus = &"SFX"
+
+[node name="Up" parent="." instance=ExtResource("7_u0ckf")]
+position = Vector2(47, 40)
+
+[node name="Down" parent="." instance=ExtResource("7_u0ckf")]
+position = Vector2(76, 40)
+
+[node name="Left" parent="." instance=ExtResource("7_u0ckf")]
+position = Vector2(110, 40)
+
+[node name="Right" parent="." instance=ExtResource("7_u0ckf")]
+position = Vector2(149, 40)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

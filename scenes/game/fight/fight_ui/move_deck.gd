@@ -13,7 +13,7 @@ const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 @onready var move_4 = $HBoxContainer/move4
 @onready var h_box_container = $HBoxContainer
 @onready var animation_player = $AnimationPlayer
-@onready var APdisplay = $HBoxContainer/Panel/HBoxContainer2
+@onready var APdisplay = $HBoxContainer/HBoxContainer2
 
 func _ready():
 	randomize()
@@ -74,7 +74,9 @@ func refreshAPDisplay() -> void:
 		var node = APdisplay.get_child(n)
 		if not node:
 			APdisplay.add_child(TextureRect.new())
-			node = APdisplay.get_child(n)
+			node = APdisplay.get_child(n) as TextureRect
+			node.expand_mode = TextureRect.EXPAND_FIT_WIDTH
+			node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		
 		var texture
 		match PlayerData.ActionPoints[n]:

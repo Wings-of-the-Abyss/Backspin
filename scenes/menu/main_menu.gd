@@ -16,6 +16,6 @@ func _on_options_pressed() -> void:
 
 
 func _on_play_pressed():
-	transition.play("fade-in")
+	transition.play("fade-out")
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://scenes/game/game.tscn")

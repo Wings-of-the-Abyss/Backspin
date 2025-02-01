@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhfv43lgecgnq"]
+[gd_scene load_steps=19 format=3 uid="uid://dhfv43lgecgnq"]
 
 [ext_resource type="Texture2D" uid="uid://cn2qqmn4sm7v6" path="res://assets/characters/Grey minion 1/Idle animation for grey minion 1/idle animation for gray 1.png" id="1_70y0v"]
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="1_jpg0i"]
+[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="3_mtg8m"]
+[ext_resource type="Resource" uid="uid://e5vo7i5tay64" path="res://scenes/game/Moves/enemymoves/enemymove.tres" id="4_cyr3l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3ujj"]
 atlas = ExtResource("1_70y0v")
@@ -150,6 +152,7 @@ alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("1_jpg0i")
+EnemyMoves = Array[ExtResource("3_mtg8m")]([ExtResource("4_cyr3l")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

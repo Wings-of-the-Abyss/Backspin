@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_lblsf")
-Notes = Array[StringName]([])
-Timings = Array[float]([])
+Notes = Array[StringName]([&"left", &"right", &"left", &"left", &"right", &"right", &"down", &"up", &"down", &"down", &"left", &"up", &"down", &"right", &"down"])
+Timings = Array[float]([0.2, 0.8, 0.2, 0.2, 0.2, 0.5, 0.4, 0.4, 0.1, 0.2, 0.3, 0.3, 0.6, 1.0, 0.0])
 Multiplier = 1.0

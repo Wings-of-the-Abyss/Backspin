@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://crkwqxkulmmf1"]
+[gd_scene load_steps=14 format=3 uid="uid://crkwqxkulmmf1"]
 
 [ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_c0oph"]
 [ext_resource type="Script" path="res://scenes/menu/settings_ui.gd" id="1_rpx8o"]
 [ext_resource type="Shader" path="res://scenes/menu/panel.gdshader" id="2_on0ao"]
 [ext_resource type="Texture2D" uid="uid://cxuqcc5r3kss5" path="res://assets/ui/slider.png" id="3_cw5l8"]
 [ext_resource type="LabelSettings" uid="uid://b6ceii078b0fl" path="res://assets/fonts/labelsetting.tres" id="3_cxv25"]
+[ext_resource type="AudioStream" uid="uid://dnhkxpdpcsemr" path="res://assets/musics/Step Back - Menu Theme.mp3" id="6_r2f0i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8ljq"]
 shader = ExtResource("2_on0ao")
@@ -170,7 +171,7 @@ value = 0.65
 
 [node name="SFXVolume" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 113
+theme_override_constants/separation = 63
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer/SFXVolume"]
 layout_mode = 2
@@ -189,7 +190,7 @@ value = 0.65
 
 [node name="MusicVolume" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 51
+theme_override_constants/separation = 29
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer/MusicVolume"]
 layout_mode = 2
@@ -205,6 +206,11 @@ theme_override_styles/slider = SubResource("StyleBoxFlat_7bexl")
 max_value = 1.0
 step = 0.01
 value = 0.65
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_r2f0i")
+autoplay = true
+bus = &"Songs"
 
 [connection signal="value_changed" from="MarginContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer/MasterVolume/HSlider" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="MarginContainer/Panel/VBoxContainer/MarginContainer/VBoxContainer/SFXVolume/HSlider" to="." method="_on_sfx_value_changed"]
