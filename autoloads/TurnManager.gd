@@ -36,6 +36,7 @@ func player_turn() -> void:
 	PlayerData.ActionPoints.append_array(actionpoint_refresh)
 	player_turn_started.emit()
 	await execute_moves
+	await get_tree().create_timer(1.0).timeout
 	execute_queue()
 	await execution_complete
 	turn_switch()
@@ -65,12 +66,14 @@ func selection_complete() -> void:
 	execute_moves.emit()
 
 ##Use this to add a move from the available bunch to the queue, use their index in the deck (card number 0, 1, etc)
-func add_move_to_queue(move: Move) -> void:
+func add_move_to_queue(move: Move) -> bool:
 	for N in move.Notes:
+		if N == &"": continue
 		if !PlayerData.ActionPoints.has(N):
-			return
+			return false
 		PlayerData.ActionPoints.erase(N)
 	queue.append(move)
+	return true
 
 ##Executes the queue
 func execute_queue() -> void:

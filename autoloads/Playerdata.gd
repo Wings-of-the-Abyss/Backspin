@@ -1,9 +1,8 @@
 extends Node
 
-const EXAMPLE = preload("res://scenes/game/Moves/Example.tres")
-
+const movePath = "res://scenes/game/Moves/playermoves/"
 var MoveDeck: Array[Move] = [
-	EXAMPLE,
+	
 ]
 var ActionPoints: Array[StringName] = []
 
@@ -15,6 +14,9 @@ signal damage_taken
 signal hype_updated
 
 func _ready():
+	var movelist = DirAccess.get_files_at(movePath)
+	for M in movelist:
+		MoveDeck.append(load(movePath + M))
 	died.connect(TurnManager.on_death)
 
 func update_hype(amount: int):

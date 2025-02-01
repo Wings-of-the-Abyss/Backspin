@@ -1,9 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlla330gdcucj"]
+[gd_scene load_steps=9 format=3 uid="uid://dlla330gdcucj"]
 
 [ext_resource type="Script" path="res://scenes/game/fight/fight_ui/move_deck.gd" id="1_qmlsu"]
 [ext_resource type="Texture2D" uid="uid://bechtpvf8jvdh" path="res://assets/ui/Move_card.png" id="2_rme4u"]
+[ext_resource type="Shader" path="res://scenes/menu/panel.gdshader" id="3_sh1es"]
 
 [sub_resource type="Shortcut" id="Shortcut_ywvy6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fewo"]
+shader = ExtResource("3_sh1es")
+shader_parameter/zoom = 20.0
+shader_parameter/wave_crop = 0.0
+shader_parameter/brightness = 0.5
+shader_parameter/speed = 1.0
+shader_parameter/iterations = 1.0
+shader_parameter/freq_start = 20.0
+shader_parameter/freq_coeff = 1.0
 
 [sub_resource type="Animation" id="Animation_fouvi"]
 length = 0.001
@@ -18,6 +29,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(157, 1197)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3747.26, -4562.51)]
 }
 
 [sub_resource type="Animation" id="Animation_t2i1c"]
@@ -36,6 +59,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(157, 912), Vector2(157, 1197)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-653.149, -3585.17), Vector2(-3747.26, -4562.51)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o8po0"]
 _data = {
@@ -52,7 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qmlsu")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -66,11 +101,11 @@ offset_bottom = 1197.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.209753, 0.209753)
-theme_override_constants/separation = 4
-alignment = 1
 
 [node name="move1" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
 texture_normal = ExtResource("2_rme4u")
@@ -137,6 +172,9 @@ grow_vertical = 2
 
 [node name="move2" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
+offset_left = 1924.0
+offset_right = 3844.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
 shortcut = SubResource("Shortcut_ywvy6")
@@ -204,6 +242,9 @@ grow_vertical = 2
 
 [node name="move3" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
+offset_left = 3848.0
+offset_right = 5768.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
 shortcut = SubResource("Shortcut_ywvy6")
@@ -271,6 +312,9 @@ grow_vertical = 2
 
 [node name="move4" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
+offset_left = 5772.0
+offset_right = 7692.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
 shortcut = SubResource("Shortcut_ywvy6")
@@ -337,12 +381,57 @@ offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+material = SubResource("ShaderMaterial_1fewo")
+clip_contents = true
+layout_mode = 0
+offset_left = -3747.26
+offset_top = -4562.51
+offset_right = -2307.26
+offset_bottom = -4202.51
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_o8po0")
 }
 
 [connection signal="button_down" from="HBoxContainer/move1" to="." method="_on_move_1_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/move1" to="." method="_on_move_mouse_entered" binds= [1]]
+[connection signal="mouse_exited" from="HBoxContainer/move1" to="." method="_on_move_mouse_exited" binds= [1]]
 [connection signal="button_down" from="HBoxContainer/move2" to="." method="_on_move_2_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/move2" to="." method="_on_move_mouse_entered" binds= [2]]
+[connection signal="mouse_exited" from="HBoxContainer/move2" to="." method="_on_move_mouse_exited" binds= [2]]
 [connection signal="button_down" from="HBoxContainer/move3" to="." method="_on_move_3_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/move3" to="." method="_on_move_mouse_entered" binds= [3]]
+[connection signal="mouse_exited" from="HBoxContainer/move3" to="." method="_on_move_mouse_exited" binds= [3]]
 [connection signal="button_down" from="HBoxContainer/move4" to="." method="_on_move_4_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/move4" to="." method="_on_move_mouse_entered" binds= [4]]
+[connection signal="mouse_exited" from="HBoxContainer/move4" to="." method="_on_move_mouse_exited" binds= [4]]

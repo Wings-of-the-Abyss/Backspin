@@ -23,7 +23,7 @@ func _process(delta):
 			FallingNotes.get(N).hide()
 		N.time_window -= delta
 		var node = FallingNotes.get(N)
-		node.position.y = (note_startY*N.time_window)+notecatcher.position.y
+		node.position.y = (note_startY*N.time_window/2)+notecatcher.position.y
 
 func note_cleanup() -> void:
 	if FreedNotes.is_empty(): return

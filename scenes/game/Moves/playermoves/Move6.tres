@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://dnskuxhbkxxtw"]
+
+[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="1_k5xme"]
+
+[resource]
+script = ExtResource("1_k5xme")
+Notes = Array[StringName]([&"left", &"down", &"up", &""])
+Timings = Array[float]([0.2, 0.2, 0.2, 0.8])
+Multiplier = 1.0

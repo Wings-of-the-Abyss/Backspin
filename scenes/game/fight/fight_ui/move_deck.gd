@@ -13,6 +13,7 @@ const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 @onready var move_4 = $HBoxContainer/move4
 @onready var h_box_container = $HBoxContainer
 @onready var animation_player = $AnimationPlayer
+@onready var APdisplay = $HBoxContainer/Panel/HBoxContainer2
 
 func _ready():
 	randomize()
@@ -43,6 +44,26 @@ func create_hand() -> void:
 			slot += 1
 		index += 1
 	hand = newhand
+	
+	for n in range(PlayerData.ActionPoints.size()):
+		var node = APdisplay.get_child(n)
+		if not node:
+			APdisplay.add_child(TextureRect.new())
+			node = APdisplay.get_child(n)
+		
+		var texture
+		match PlayerData.ActionPoints[n]:
+			&"left":
+				texture = ARROW_LEFT
+			&"up":
+				texture = ARROW_UP
+			&"right":
+				texture = ARROW_RIGHT
+			&"down":
+				texture = ARROW_DOWN
+		node.texture = texture
+		
+	
 	set_deck_visible(true)
 	animation_player.play_backwards("down")
 
@@ -66,13 +87,39 @@ func set_deck_visible(b: bool) -> void:
 	h_box_container.visible = b
 
 func _on_move_1_button_down() -> void:
-	TurnManager.add_move_to_queue(hand[0])
+	if TurnManager.add_move_to_queue(hand[0]):
+		var t = get_tree().create_tween()
+		t.tween_property(move_1, "position", Vector2(move_1.position.x, 512), 0.2)
+		await t.finished
+		move_1.hide()
 
 func _on_move_2_button_down() -> void:
-	TurnManager.add_move_to_queue(hand[1])
+	if TurnManager.add_move_to_queue(hand[1]):
+		var t = get_tree().create_tween()
+		t.tween_property(move_2, "position", Vector2(move_2.position.x, 512), 0.2)
+		await t.finished
+		move_2.hide()
 
 func _on_move_3_button_down() -> void:
-	TurnManager.add_move_to_queue(hand[2])
+	if TurnManager.add_move_to_queue(hand[2]):
+		var t = get_tree().create_tween()
+		t.tween_property(move_3, "position", Vector2(move_3.position.x, 512), 0.2)
+		await t.finished
+		move_3.hide()
 
 func _on_move_4_button_down() -> void:
-	TurnManager.add_move_to_queue(hand[3])
+	if TurnManager.add_move_to_queue(hand[3]):
+		var t = get_tree().create_tween()
+		t.tween_property(move_4, "position", Vector2(move_4.position.x, 512), 0.2)
+		await t.finished
+		move_4.hide()
+
+func _on_move_mouse_entered(button: int):
+	var hover = h_box_container.get_child(button-1)
+	var t = get_tree().create_tween()
+	t.tween_property(hover, "position", Vector2(hover.position.x, -64), 0.2)
+
+func _on_move_mouse_exited(button: int):
+	var hover = h_box_container.get_child(button-1)
+	var t = get_tree().create_tween()
+	t.tween_property(hover, "position", Vector2(hover.position.x, 0), 0.2)
