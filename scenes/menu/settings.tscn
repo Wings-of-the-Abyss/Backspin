@@ -1,10 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://crkwqxkulmmf1"]
+[gd_scene load_steps=13 format=3 uid="uid://crkwqxkulmmf1"]
 
 [ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_c0oph"]
 [ext_resource type="Script" path="res://scenes/menu/settings_ui.gd" id="1_rpx8o"]
 [ext_resource type="Shader" path="res://scenes/menu/panel.gdshader" id="2_on0ao"]
 [ext_resource type="Texture2D" uid="uid://cxuqcc5r3kss5" path="res://assets/ui/slider.png" id="3_cw5l8"]
 [ext_resource type="LabelSettings" uid="uid://b6ceii078b0fl" path="res://assets/fonts/labelsetting.tres" id="3_cxv25"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8ljq"]
+shader = ExtResource("2_on0ao")
+shader_parameter/zoom = 20.0
+shader_parameter/wave_crop = 0.0
+shader_parameter/brightness = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/iterations = 5.0
+shader_parameter/freq_start = 20.0
+shader_parameter/freq_coeff = 1.0
 
 [sub_resource type="Gradient" id="Gradient_yxjee"]
 colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
@@ -13,27 +23,14 @@ colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
 gradient = SubResource("Gradient_yxjee")
 fill_from = Vector2(1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_46tef"]
-shader = ExtResource("2_on0ao")
-shader_parameter/zoom = 1.0
-shader_parameter/wave_crop = 0.0
-shader_parameter/brightness = 0.5
-shader_parameter/speed = 1.0
-shader_parameter/iterations = 5.0
-shader_parameter/freq_start = 20.0
-shader_parameter/freq_coeff = 1.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhld5"]
-bg_color = Color(0.174028, 0.174028, 0.174028, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 1)
-shadow_size = 2
+shadow_size = 20
 shadow_offset = Vector2(0, 2)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8w8x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6asgq"]
 border_width_left = 4
@@ -84,10 +81,15 @@ grow_vertical = 2
 script = ExtResource("1_rpx8o")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1097.0
+material = SubResource("ShaderMaterial_r8ljq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_c0oph")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
 layout_mode = 1
@@ -111,7 +113,7 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
-material = SubResource("ShaderMaterial_46tef")
+self_modulate = Color(0, 0, 0, 0.298039)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_vhld5")
@@ -123,17 +125,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -508.0
-offset_top = -328.0
-offset_right = 508.0
-offset_bottom = 328.0
+offset_left = -288.0
+offset_top = -148.0
+offset_right = 288.0
+offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 24
-theme_override_styles/separator = SubResource("StyleBoxEmpty_f8w8x")
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
@@ -143,10 +140,10 @@ horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
