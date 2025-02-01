@@ -18,6 +18,9 @@ const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 func _ready():
 	randomize()
 	TurnManager.player_turn_started.connect(create_hand)
+	await get_tree().create_timer(0.5).timeout
+	if hand.is_empty():
+		create_hand()
 
 func create_hand() -> void:
 	var newhand: Array[Move] = []
@@ -92,7 +95,7 @@ func set_deck_visible(b: bool) -> void:
 func _on_move_1_button_down() -> void:
 	if TurnManager.add_move_to_queue(hand[0]):
 		var t = get_tree().create_tween()
-		t.tween_property(move_1, "position", Vector2(move_1.position.x, 512), 0.2)
+		t.tween_property(move_1, "position", Vector2(move_1.position.x, 0), 0.2)
 		await t.finished
 		move_1.hide()
 		refreshAPDisplay()
@@ -100,7 +103,7 @@ func _on_move_1_button_down() -> void:
 func _on_move_2_button_down() -> void:
 	if TurnManager.add_move_to_queue(hand[1]):
 		var t = get_tree().create_tween()
-		t.tween_property(move_2, "position", Vector2(move_2.position.x, 512), 0.2)
+		t.tween_property(move_2, "position", Vector2(move_2.position.x, 0), 0.2)
 		await t.finished
 		move_2.hide()
 		refreshAPDisplay()
@@ -108,7 +111,7 @@ func _on_move_2_button_down() -> void:
 func _on_move_3_button_down() -> void:
 	if TurnManager.add_move_to_queue(hand[2]):
 		var t = get_tree().create_tween()
-		t.tween_property(move_3, "position", Vector2(move_3.position.x, 512), 0.2)
+		t.tween_property(move_3, "position", Vector2(move_3.position.x, 0), 0.2)
 		await t.finished
 		move_3.hide()
 		refreshAPDisplay()
@@ -116,7 +119,7 @@ func _on_move_3_button_down() -> void:
 func _on_move_4_button_down() -> void:
 	if TurnManager.add_move_to_queue(hand[3]):
 		var t = get_tree().create_tween()
-		t.tween_property(move_4, "position", Vector2(move_4.position.x, 512), 0.2)
+		t.tween_property(move_4, "position", Vector2(move_4.position.x, 0), 0.2)
 		await t.finished
 		move_4.hide()
 		refreshAPDisplay()
@@ -124,9 +127,9 @@ func _on_move_4_button_down() -> void:
 func _on_move_mouse_entered(button: int):
 	var hover = h_box_container.get_child(button-1)
 	var t = get_tree().create_tween()
-	t.tween_property(hover, "position", Vector2(hover.position.x, -64), 0.2)
+	t.tween_property(hover, "position", Vector2(hover.position.x, -200), 0.2)
 
 func _on_move_mouse_exited(button: int):
 	var hover = h_box_container.get_child(button-1)
 	var t = get_tree().create_tween()
-	t.tween_property(hover, "position", Vector2(hover.position.x, 0), 0.2)
+	t.tween_property(hover, "position", Vector2(hover.position.x, -170), 0.2)

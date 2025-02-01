@@ -19,11 +19,11 @@ autostart = true
 
 [node name="Notecatcher" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -433.0
-offset_top = 17.0
-offset_right = 912.0
-offset_bottom = 387.0
-scale = Vector2(0.296, 0.296)
+offset_left = -183.0
+offset_top = 25.0
+offset_right = 1162.0
+offset_bottom = 395.0
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_guifo")
 stretch_mode = 2
 flip_h = true

@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlla330gdcucj"]
+[gd_scene load_steps=8 format=3 uid="uid://dlla330gdcucj"]
 
 [ext_resource type="Script" path="res://scenes/game/fight/fight_ui/move_deck.gd" id="1_qmlsu"]
 [ext_resource type="Texture2D" uid="uid://bechtpvf8jvdh" path="res://assets/ui/Move_card.png" id="2_rme4u"]
 [ext_resource type="Shader" path="res://scenes/menu/panel.gdshader" id="3_sh1es"]
-
-[sub_resource type="Shortcut" id="Shortcut_ywvy6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1fewo"]
 shader = ExtResource("3_sh1es")
@@ -57,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(157, 912), Vector2(157, 1197)]
+"values": [Vector2(360, 360), Vector2(360, 445)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -69,7 +67,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-653.149, -3585.17), Vector2(-3747.26, -4562.51)]
+"values": [Vector2(18, 75), Vector2(-675, 75)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o8po0"]
@@ -85,6 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 script = ExtResource("1_qmlsu")
 
 [node name="HBoxContainer" type="Control" parent="."]
@@ -94,18 +93,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -803.0
-offset_top = 117.0
-offset_right = 6889.0
-offset_bottom = 1197.0
+offset_left = 40.0
+offset_right = 40.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.209753, 0.209753)
 
 [node name="move1" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -858.0
+offset_top = -171.63
+offset_right = 1062.0
+offset_bottom = 908.37
+scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
 texture_normal = ExtResource("2_rme4u")
@@ -172,12 +172,13 @@ grow_vertical = 2
 
 [node name="move2" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 1924.0
-offset_right = 3844.0
-offset_bottom = 1080.0
+offset_left = -524.426
+offset_top = -171.63
+offset_right = 1395.57
+offset_bottom = 908.37
+scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
-shortcut = SubResource("Shortcut_ywvy6")
 texture_normal = ExtResource("2_rme4u")
 
 [node name="Arrow1" type="TextureRect" parent="HBoxContainer/move2"]
@@ -242,12 +243,13 @@ grow_vertical = 2
 
 [node name="move3" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 3848.0
-offset_right = 5768.0
-offset_bottom = 1080.0
+offset_left = -185.933
+offset_top = -171.63
+offset_right = 1734.07
+offset_bottom = 908.37
+scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
-shortcut = SubResource("Shortcut_ywvy6")
 texture_normal = ExtResource("2_rme4u")
 
 [node name="Arrow1" type="TextureRect" parent="HBoxContainer/move3"]
@@ -312,12 +314,13 @@ grow_vertical = 2
 
 [node name="move4" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 5772.0
-offset_right = 7692.0
-offset_bottom = 1080.0
+offset_left = 152.56
+offset_top = -171.63
+offset_right = 2072.56
+offset_bottom = 908.37
+scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
-shortcut = SubResource("Shortcut_ywvy6")
 texture_normal = ExtResource("2_rme4u")
 ignore_texture_size = true
 
@@ -382,13 +385,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
+top_level = true
 material = SubResource("ShaderMaterial_1fewo")
-clip_contents = true
 layout_mode = 0
-offset_left = -3747.26
-offset_top = -4562.51
-offset_right = -2307.26
-offset_bottom = -4202.51
+offset_left = 18.0
+offset_top = 75.0
+offset_right = 223.0
+offset_bottom = 107.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel"]
 layout_mode = 1
@@ -397,26 +400,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 3
-stretch_mode = 2
+expand_mode = 2
+stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 3
-stretch_mode = 2
+expand_mode = 2
+stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 3
-stretch_mode = 2
+expand_mode = 2
+stretch_mode = 5
 
 [node name="TextureRect4" type="TextureRect" parent="HBoxContainer/Panel/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 3
-stretch_mode = 2
+expand_mode = 2
+stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

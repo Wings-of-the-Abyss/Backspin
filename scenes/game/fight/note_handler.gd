@@ -71,19 +71,19 @@ func add_note(type: StringName, id: Note) -> void:
 	match type:
 		&"left":
 			texture = ARROW_LEFT
-			startpos.x += 223
+			startpos.x += 78
 		&"up":
 			texture = ARROW_UP
-			startpos.x += 36
+			startpos.x += 12.5
 		&"right":
 			texture = ARROW_RIGHT
-			startpos.x += 345
+			startpos.x += 115
 		&"down":
 			texture = ARROW_DOWN
-			startpos.x += 124
+			startpos.x += 42
 	
 	if texture:
-		sprite.scale = Vector2.ONE*0.296
+		sprite.scale = Vector2.ONE*0.1
 		sprite.texture = texture
 		add_child(sprite)
 		sprite.position = startpos

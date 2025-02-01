@@ -411,32 +411,33 @@ shadow_enabled = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -179.0
-offset_right = 1741.0
-offset_bottom = 1080.0
+offset_left = -46.0
+offset_top = 24.0
+offset_right = 1874.0
+offset_bottom = 1104.0
 grow_horizontal = 2
-scale = Vector2(0.202594, 0.202594)
+scale = Vector2(0.0435679, 0.0435679)
 size_flags_horizontal = 4
 texture = ExtResource("5_34e5e")
 
 [node name="EnemyHp" type="TextureProgressBar" parent="CanvasLayer"]
 modulate = Color(1, 1, 0, 1)
-offset_left = 1460.0
-offset_top = 24.0
-offset_right = 1524.0
-offset_bottom = 88.0
-scale = Vector2(-2, 2)
+offset_left = 434.0
+offset_top = 31.0
+offset_right = 498.0
+offset_bottom = 95.0
+scale = Vector2(-0.5, 0.5)
 value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("6_rrr83")
 texture_progress = ExtResource("7_vfpnk")
 
 [node name="EnemyHype" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 1304.0
+offset_left = 388.0
 offset_top = 27.0
-offset_right = 1368.0
+offset_right = 452.0
 offset_bottom = 91.0
-scale = Vector2(-2, 2)
+scale = Vector2(-0.5, 0.5)
 nine_patch_stretch = true
 texture_under = ExtResource("7_v44ek")
 

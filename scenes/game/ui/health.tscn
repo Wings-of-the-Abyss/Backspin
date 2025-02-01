@@ -19,11 +19,11 @@ script = ExtResource("1_7n667")
 
 [node name="HYPE" type="TextureProgressBar" parent="."]
 layout_mode = 2
-offset_left = 625.0
-offset_top = 33.0
-offset_right = 687.0
-offset_bottom = 97.0
-scale = Vector2(2, 2)
+offset_left = 237.0
+offset_top = 26.0
+offset_right = 299.0
+offset_bottom = 90.0
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 nine_patch_stretch = true
@@ -32,11 +32,11 @@ texture_progress = ExtResource("3_edggg")
 
 [node name="HP" type="TextureProgressBar" parent="."]
 layout_mode = 2
-offset_left = 468.0
-offset_top = 33.0
-offset_right = 530.0
-offset_bottom = 97.0
-scale = Vector2(2, 2)
+offset_left = 184.0
+offset_top = 29.0
+offset_right = 246.0
+offset_bottom = 93.0
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 nine_patch_stretch = true
