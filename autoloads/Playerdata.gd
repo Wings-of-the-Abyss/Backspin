@@ -13,6 +13,9 @@ signal died
 signal damage_taken
 signal hype_updated
 
+signal HypeMax
+signal NoteHit(value: int)
+
 func _ready():
 	var movelist = DirAccess.get_files_at(movePath)
 	for M in movelist:
@@ -21,8 +24,10 @@ func _ready():
 
 func update_hype(amount: int):
 	Hype = max(0, Hype+amount)
+	NoteHit.emit(amount)
 	hype_updated.emit()
 	if Hype >= 100:
+		HypeMax.emit()
 		get_tree().get_first_node_in_group("player").hypehit()
 		HP = 100
 		Hype = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cbx4ekddo1dpc"]
+[gd_scene load_steps=54 format=3 uid="uid://cbx4ekddo1dpc"]
 
 [ext_resource type="PackedScene" uid="uid://bholuvfuiblp1" path="res://scenes/game/fight/note_handler.tscn" id="1_ymu70"]
 [ext_resource type="PackedScene" uid="uid://dlla330gdcucj" path="res://scenes/game/fight/fight_ui/move_deck.tscn" id="2_vtpkq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://djon6pveqkj7f" path="res://assets/characters/playerchar/move 5 brj-Sheet.png" id="7_yokks"]
 [ext_resource type="Texture2D" uid="uid://dyj55cnxa2pjq" path="res://assets/characters/playerchar/bossrush jam move 4-Sheet.png" id="8_2ppmh"]
 [ext_resource type="Texture2D" uid="uid://dyvs4n7c1y5if" path="res://assets/characters/playerchar/boss rush jam character animmove 3-Sheet.png" id="8_xvbhf"]
+[ext_resource type="Script" path="res://scenes/game/ui/Scoretext.gd" id="9_mlaju"]
 [ext_resource type="Texture2D" uid="uid://3rvxoslkb28r" path="res://assets/characters/playerchar/bossrush jam character spin.png" id="9_rmgn5"]
 [ext_resource type="Script" path="res://scenes/game/characterstuff/player_sprite.gd" id="11_3xchw"]
 [ext_resource type="Texture2D" uid="uid://qipp1ytunt6f" path="res://assets/characters/playerchar/bossrush character death anim-Sheet.png" id="11_rhiqe"]
@@ -405,10 +406,10 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -417,7 +418,7 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.166667, 0.5),
+"times": PackedFloat32Array(0.166667, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 6.26573, 0)]
@@ -450,6 +451,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 4, 5, 6, 7, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_1qlc7"]
@@ -596,6 +609,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 293.0
+offset_top = 64.0
+offset_right = 333.0
+offset_bottom = 104.0
+script = ExtResource("9_mlaju")
 
 [node name="blockbench_export" parent="." instance=ExtResource("4_6o2bc")]
 

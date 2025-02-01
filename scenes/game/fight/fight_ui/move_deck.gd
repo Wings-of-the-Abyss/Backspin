@@ -93,7 +93,8 @@ func refreshAPDisplay() -> void:
 		
 
 func set_deck_visible(b: bool) -> void:
-	h_box_container.visible = b
+	for B in h_box_container.get_children():
+		B.visible = b
 
 func _on_move_1_button_down() -> void:
 	if TurnManager.add_move_to_queue(hand[0]):

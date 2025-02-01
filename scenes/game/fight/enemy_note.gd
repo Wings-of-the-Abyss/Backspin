@@ -21,7 +21,7 @@ func _process(delta):
 		if is_equal_approx(N.time_window, 0.0):
 			FreedNotes.append(N)
 			FallingNotes.get(N).hide()
-		N.time_window -= delta
+		N.time_window -= delta/3
 		var node = FallingNotes.get(N)
 		node.position.y = (note_startY*N.time_window/2)+notecatcher.position.y
 

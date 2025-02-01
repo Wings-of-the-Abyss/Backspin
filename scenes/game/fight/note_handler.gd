@@ -50,11 +50,11 @@ func _physics_process(delta):
 		var hype: int = 0
 		if input:
 			var poptime = abs(N.time_window)
-			if poptime*100 < 10.0:
+			if poptime*100 < 7.5:
 				get_tree().get_first_node_in_group("player").NoteHit(N.assigned_input)
 				FreedNotes.append(N)
 				FallingNotes.get(N).hide()
-				hype += floor(20 * (1-poptime)*N.hype_mult)
+				hype += floor(20 * N.hype_mult)
 				hit_audio(N.assigned_input)
 				print("Hit!")
 			else:
@@ -62,7 +62,6 @@ func _physics_process(delta):
 				print("miss...")
 				if !TurnManager.turn:
 					PlayerData.deal_damage(10)
-		
 		
 		if hype != 0: 
 			PlayerData.update_hype(hype)

@@ -70,13 +70,18 @@ func selection_complete() -> void:
 
 ##Use this to add a move from the available bunch to the queue, use their index in the deck (card number 0, 1, etc)
 func add_move_to_queue(move: Move) -> bool:
+	var has_points = true
 	for N in move.Notes:
 		if N == &"": continue
 		if !PlayerData.ActionPoints.has(N):
-			return false
-		PlayerData.ActionPoints.erase(N)
-	queue.append(move)
-	return true
+			has_points = false
+			break
+	if has_points:
+		for n in move.Notes:
+			PlayerData.ActionPoints.erase(n)
+		queue.append(move)
+		return true
+	return false
 
 ##Executes the queue
 func execute_queue() -> void:
