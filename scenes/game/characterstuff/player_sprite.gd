@@ -19,3 +19,6 @@ func hypehit() -> void:
 	player_anim.play("hype")
 	await player_anim.animation_changed
 	player_anim.play("idle")
+
+func die() -> void:
+	player_anim.play("die")

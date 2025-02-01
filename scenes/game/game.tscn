@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cbx4ekddo1dpc"]
+[gd_scene load_steps=50 format=3 uid="uid://cbx4ekddo1dpc"]
 
 [ext_resource type="PackedScene" uid="uid://bholuvfuiblp1" path="res://scenes/game/fight/note_handler.tscn" id="1_ymu70"]
 [ext_resource type="PackedScene" uid="uid://dlla330gdcucj" path="res://scenes/game/fight/fight_ui/move_deck.tscn" id="2_vtpkq"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dyvs4n7c1y5if" path="res://assets/characters/playerchar/boss rush jam character animmove 3-Sheet.png" id="8_xvbhf"]
 [ext_resource type="Texture2D" uid="uid://3rvxoslkb28r" path="res://assets/characters/playerchar/bossrush jam character spin.png" id="9_rmgn5"]
 [ext_resource type="Script" path="res://scenes/game/characterstuff/player_sprite.gd" id="11_3xchw"]
+[ext_resource type="Texture2D" uid="uid://qipp1ytunt6f" path="res://assets/characters/playerchar/bossrush character death anim-Sheet.png" id="11_rhiqe"]
 [ext_resource type="PackedScene" uid="uid://dhfv43lgecgnq" path="res://scenes/game/Opponents/enemy_1.tscn" id="17_wwwsg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i1h8k"]
@@ -69,6 +70,10 @@ region = Rect2(1200, 0, 150, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vum6x"]
 atlas = ExtResource("6_d67uy")
 region = Rect2(1350, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3omj"]
+atlas = ExtResource("11_rhiqe")
+region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eodsf"]
 atlas = ExtResource("8_2ppmh")
@@ -134,6 +139,14 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3omj")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -224,6 +237,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11, 21.913, -7)]
+}
+
+[sub_resource type="Animation" id="Animation_rc5rw"]
+resource_name = "die"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(11, 21.913, -7), Vector3(53, 21.913, -7)]
 }
 
 [sub_resource type="Animation" id="Animation_7fexl"]
@@ -379,6 +433,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lglq5"]
 _data = {
 "RESET": SubResource("Animation_30f0r"),
+"die": SubResource("Animation_rc5rw"),
 "downHit": SubResource("Animation_7fexl"),
 "hype": SubResource("Animation_riyg2"),
 "idle": SubResource("Animation_n0lib"),

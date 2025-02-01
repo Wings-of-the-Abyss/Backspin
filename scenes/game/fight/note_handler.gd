@@ -1,6 +1,10 @@
 extends Node
 
 @onready var notecatcher = $Notecatcher
+@onready var notehit_up = $NotehitUp
+@onready var notehit_down = $NotehitDown
+@onready var notehit_left = $NotehitLeft
+@onready var notehit_right = $NotehitRight
 
 var FallingNotes: Dictionary = {}
 var FreedNotes: Array[Note] = []
@@ -32,6 +36,7 @@ func _unhandled_input(_event):
 				FreedNotes.append(N)
 				FallingNotes.get(N).hide()
 				hype += floor(20 * (1-poptime)*N.hype_mult)
+				hit_audio(N.assigned_input)
 				print("Hit!")
 			else:
 				hype = -30
@@ -91,3 +96,14 @@ func add_note(type: StringName, id: Note) -> void:
 
 func _on_timer_timeout():
 	note_cleanup()
+
+func hit_audio(type: StringName) -> void:
+	match type:
+		&"left":
+			notehit_left.play()
+		&"up":
+			notehit_up.play()
+		&"right":
+			notehit_right.play()
+		&"down":
+			notehit_down.play()

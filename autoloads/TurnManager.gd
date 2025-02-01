@@ -60,7 +60,9 @@ func turn_switch() -> void:
 	turn = !turn
 
 func on_death() -> void:
-	print("Dead")
+	get_tree().get_first_node_in_group("player").die()
+	await get_tree().create_timer(1.0).timeout
+	get_tree().quit()
 
 #region Player Move Stuff
 func selection_complete() -> void:
