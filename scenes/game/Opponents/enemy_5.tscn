@@ -1,13 +1,17 @@
-[gd_scene load_steps=34 format=3 uid="uid://crx5kd0iawb4o"]
+[gd_scene load_steps=38 format=3 uid="uid://crx5kd0iawb4o"]
 
 [ext_resource type="Texture2D" uid="uid://cyg7cevtqxg6l" path="res://assets/characters/Boss 3 afro boss/Afro boss, boss 3 idle animation/bossrush character 3 idle-Sheet.png" id="1_new8t"]
-[ext_resource type="Texture2D" uid="uid://cwoul4vj2fpbd" path="res://assets/characters/Purple minion mini boss/purple minion miniboss death anim/purple minion miniboss death -Sheet.png" id="2_pf4rj"]
-[ext_resource type="Texture2D" uid="uid://bq1ttxk7pm4r1" path="res://assets/characters/Purple minion mini boss/move 3 purple minion miniboss/purple miniboss move 3-Sheet.png" id="3_0xem4"]
-[ext_resource type="Texture2D" uid="uid://dj6x7xt6rla5i" path="res://assets/characters/Purple minion mini boss/Purple miniboss move 1/purple miniboss move 1-Sheet.png" id="4_4h2aj"]
-[ext_resource type="Texture2D" uid="uid://dkgvhpn688swd" path="res://assets/characters/Purple minion mini boss/Move 2 purple miniboss/purple miniboss move 2-Sheet.png" id="5_xjxlg"]
+[ext_resource type="Texture2D" uid="uid://bgun6rjrid3ks" path="res://assets/characters/Boss 3 afro boss/Afro death/death for boss afro-Sheet.png" id="2_nf0lk"]
+[ext_resource type="Texture2D" uid="uid://c8xey8pt22n7x" path="res://assets/characters/Boss 3 afro boss/Afro boss move 3/boss move 3 afro-Sheet.png" id="3_0yt0n"]
+[ext_resource type="Texture2D" uid="uid://subyo40p3e7r" path="res://assets/characters/Boss 3 afro boss/Afro boss move 2/afro boss move 2-Sheet.png" id="4_motp5"]
+[ext_resource type="Texture2D" uid="uid://diwkfdr41x427" path="res://assets/characters/Boss 3 afro boss/Afro boss move 1/bossrush character 3 move 1-Sheet.png" id="5_nem3l"]
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="6_jp7ye"]
 [ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="7_0j48q"]
 [ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="8_qp1sf"]
+[ext_resource type="Resource" uid="uid://b4u3nxcugtah0" path="res://scenes/game/Moves/enemymoves/enemymove2.tres" id="8_wgabn"]
+[ext_resource type="Resource" uid="uid://kswtpxa0l2mw" path="res://scenes/game/Moves/enemymoves/enemymove7.tres" id="9_1rkcl"]
+[ext_resource type="Resource" uid="uid://3pordapvbvmv" path="res://scenes/game/Moves/enemymoves/enemymove6.tres" id="10_vytqw"]
+[ext_resource type="Resource" uid="uid://dhhm7a2biwfww" path="res://scenes/game/Moves/enemymoves/enemymove3.tres" id="11_7h5w4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6fq5"]
 atlas = ExtResource("1_new8t")
@@ -53,25 +57,25 @@ region = Rect2(2250, 0, 250, 250)
 atlas = ExtResource("1_new8t")
 region = Rect2(2500, 0, 250, 250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_44r6u"]
-atlas = ExtResource("2_pf4rj")
-region = Rect2(0, 0, 150, 150)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpex6"]
+atlas = ExtResource("2_nf0lk")
+region = Rect2(0, 0, 250, 250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5fqam"]
-atlas = ExtResource("3_0xem4")
-region = Rect2(0, 0, 150, 150)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ebxr"]
+atlas = ExtResource("3_0yt0n")
+region = Rect2(0, 0, 250, 250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_40lig"]
-atlas = ExtResource("4_4h2aj")
-region = Rect2(0, 0, 150, 150)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcyni"]
+atlas = ExtResource("4_motp5")
+region = Rect2(0, 0, 250, 250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cmwww"]
-atlas = ExtResource("4_4h2aj")
-region = Rect2(0, 0, 150, 150)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5b3k"]
+atlas = ExtResource("4_motp5")
+region = Rect2(0, 0, 250, 250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rn3g1"]
-atlas = ExtResource("5_xjxlg")
-region = Rect2(0, 0, 150, 150)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1mpe"]
+atlas = ExtResource("5_nem3l")
+region = Rect2(0, 0, 250, 250)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cspdk"]
 animations = [{
@@ -115,7 +119,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_44r6u")
+"texture": SubResource("AtlasTexture_cpex6")
 }],
 "loop": true,
 "name": &"die",
@@ -123,7 +127,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5fqam")
+"texture": SubResource("AtlasTexture_2ebxr")
 }],
 "loop": true,
 "name": &"downhit",
@@ -131,7 +135,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_40lig")
+"texture": SubResource("AtlasTexture_jcyni")
 }],
 "loop": true,
 "name": &"lefthit",
@@ -139,7 +143,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cmwww")
+"texture": SubResource("AtlasTexture_x5b3k")
 }],
 "loop": true,
 "name": &"righthit",
@@ -147,7 +151,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rn3g1")
+"texture": SubResource("AtlasTexture_t1mpe")
 }],
 "loop": true,
 "name": &"uphit",
@@ -475,11 +479,12 @@ _data = {
 }
 
 [node name="Enemy2" type="AnimatedSprite3D" groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("6_jp7ye")
-EnemyMoves = Array[ExtResource("7_0j48q")]([null])
+EnemyMoves = Array[ExtResource("7_0j48q")]([ExtResource("8_wgabn"), ExtResource("9_1rkcl"), ExtResource("10_vytqw"), ExtResource("11_7h5w4")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

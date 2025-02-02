@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://vjxdv88clgcu"]
+[gd_scene load_steps=37 format=3 uid="uid://vjxdv88clgcu"]
 
 [ext_resource type="Texture2D" uid="uid://f4haivxu1gl2" path="res://assets/characters/Purple minion mini boss/purple minion minion boss idle animation/purple minion mini boss.png" id="1_np6pp"]
 [ext_resource type="Texture2D" uid="uid://cwoul4vj2fpbd" path="res://assets/characters/Purple minion mini boss/purple minion miniboss death anim/purple minion miniboss death -Sheet.png" id="2_osybv"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="6_hi4vp"]
 [ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="7_du3dh"]
 [ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="8_mv3rj"]
+[ext_resource type="Resource" uid="uid://dhhm7a2biwfww" path="res://scenes/game/Moves/enemymoves/enemymove3.tres" id="8_trg2p"]
+[ext_resource type="Resource" uid="uid://3pordapvbvmv" path="res://scenes/game/Moves/enemymoves/enemymove6.tres" id="9_4j6xs"]
+[ext_resource type="Resource" uid="uid://b4u3nxcugtah0" path="res://scenes/game/Moves/enemymoves/enemymove2.tres" id="10_fww53"]
+[ext_resource type="Resource" uid="uid://kswtpxa0l2mw" path="res://scenes/game/Moves/enemymoves/enemymove7.tres" id="11_sxd0s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8v4py"]
 atlas = ExtResource("1_np6pp")
@@ -472,7 +476,7 @@ alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("6_hi4vp")
-EnemyMoves = Array[ExtResource("7_du3dh")]([null])
+EnemyMoves = Array[ExtResource("7_du3dh")]([ExtResource("8_trg2p"), ExtResource("9_4j6xs"), ExtResource("10_fww53"), ExtResource("11_sxd0s")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

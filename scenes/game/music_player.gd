@@ -14,9 +14,7 @@ const SongList: Dictionary = {
 	1 : Battle2,
 	2 : Battle3,
 	3 : Battle4,
-	4 : Battle5,
-	5 : Battle6,
-	6 : afroguy,
+	4: afroguy
 }
 
 func _ready():

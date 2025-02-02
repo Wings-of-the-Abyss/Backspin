@@ -102,7 +102,7 @@ func add_move_to_queue(move: Move) -> bool:
 			has_points = false
 			break
 	if has_points:
-		for n in move.Notes:
+		for n in move.Cost:
 			PlayerData.ActionPoints.erase(n)
 		queue.append(move)
 		return true

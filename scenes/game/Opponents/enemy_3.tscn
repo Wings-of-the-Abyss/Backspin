@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://0rdqib1wp8hj"]
+[gd_scene load_steps=37 format=3 uid="uid://0rdqib1wp8hj"]
 
 [ext_resource type="Texture2D" uid="uid://cnl80cjpa7l18" path="res://assets/characters/Grey minion 3/Grey minion 3 idle/minion 3 idle sheet.png" id="1_5d0sb"]
 [ext_resource type="Texture2D" uid="uid://bj5t5yhmcq8eh" path="res://assets/characters/Grey minion 3/Minion 3 death/minion 3 death-Sheet.png" id="2_65tim"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="6_f2lkw"]
 [ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="7_axmps"]
 [ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="8_cw8ok"]
+[ext_resource type="Resource" uid="uid://dn786jsffpwe7" path="res://scenes/game/Moves/enemymoves/enemymove5.tres" id="8_lp6s0"]
+[ext_resource type="Resource" uid="uid://e5vo7i5tay64" path="res://scenes/game/Moves/enemymoves/enemymove1.tres" id="9_h4wu2"]
+[ext_resource type="Resource" uid="uid://b4u3nxcugtah0" path="res://scenes/game/Moves/enemymoves/enemymove2.tres" id="10_kxrq1"]
+[ext_resource type="Resource" uid="uid://dhhm7a2biwfww" path="res://scenes/game/Moves/enemymoves/enemymove3.tres" id="11_4qdvt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apdhe"]
 atlas = ExtResource("1_5d0sb")
@@ -472,7 +476,7 @@ alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("6_f2lkw")
-EnemyMoves = Array[ExtResource("7_axmps")]([null])
+EnemyMoves = Array[ExtResource("7_axmps")]([ExtResource("8_lp6s0"), ExtResource("9_h4wu2"), ExtResource("10_kxrq1"), ExtResource("11_4qdvt")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
