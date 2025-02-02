@@ -19,7 +19,7 @@ func remove_old():
 
 func add_new():
 	var index = TurnManager.BossIndex
-	if ENEMY_ORDER.size() <= index:
+	if ENEMY_ORDER.size() >= index:
 		print("out of bosses :( ")
 		TurnManager.on_death()
 	var e = ENEMY_ORDER[index].instantiate()

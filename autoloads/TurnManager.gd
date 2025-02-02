@@ -65,7 +65,9 @@ func enemy_turn() -> void:
 
 ##Turn switcher
 func turn_switch() -> void:
-	await get_tree().create_timer(3.0).timeout
+	while !active_notes.is_empty():
+		await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(1.0).timeout
 	if turn:
 		enemy_turn()
 	else:
@@ -137,6 +139,7 @@ func enemy_execute_move() -> void:
 	for i in range(enemy_move.Notes.size()):
 		var newnote = Note.new()
 		newnote.assigned_input = enemy_move.Notes[i]
+		active_notes.push_front(newnote)
 		get_tree().get_first_node_in_group("enemy-note").add_note_inverse(enemy_move.Notes[i], newnote)
 		await get_tree().create_timer(enemy_move.Timings[i]).timeout
 	enemy_execution_complete.emit()

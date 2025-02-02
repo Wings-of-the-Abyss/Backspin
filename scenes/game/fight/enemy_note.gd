@@ -10,21 +10,20 @@ const ARROW_LEFT = preload("res://assets/arrows/Arrowgreen_single.png")
 const ARROW_RIGHT = preload("res://assets/arrows/Arroworange_single.png")
 const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 
-var note_startY = 1024.0
+var note_startY = 900
 
 signal move(n: StringName)
 
 func _process(delta):
 	if FallingNotes.is_empty(): return
-	
 	for N in FallingNotes.keys():
-		if abs(N.time_window) < 0.05:
+		if N.time_window < 0:
 			FreedNotes.append(N)
 			FallingNotes.get(N).hide()
 			move.emit(N.assigned_input)
-		N.time_window -= delta/3
+		N.time_window -= delta/4
 		var node = FallingNotes.get(N)
-		node.position.y = (note_startY*N.time_window/2)+notecatcher.position.y
+		node.position.y = lerpf(notecatcher.position.y+(notecatcher.size*notecatcher.scale).y, note_startY, N.time_window)
 	
 	note_cleanup()
 
@@ -34,7 +33,7 @@ func note_cleanup() -> void:
 		if !FallingNotes.has(FN): continue
 		FallingNotes.get(FN).queue_free()
 		FallingNotes.erase(FN)
-		TurnManager.active_notes.erase(FN)
+		TurnManager.active_notes.pop_back()
 	FreedNotes.clear()
 
 func add_note(type: StringName, id: Note) -> void:
@@ -45,16 +44,16 @@ func add_note(type: StringName, id: Note) -> void:
 	match type:
 		&"left":
 			texture = ARROW_LEFT
-			startpos.x += 78
+			startpos.x += 16
 		&"up":
 			texture = ARROW_UP
-			startpos.x += 12.5
+			startpos.x += 126
 		&"right":
 			texture = ARROW_RIGHT
-			startpos.x += 115
+			startpos.x += 62
 		&"down":
 			texture = ARROW_DOWN
-			startpos.x += 42
+			startpos.x += 96
 
 	if texture:
 		sprite.scale = Vector2.ONE*0.1

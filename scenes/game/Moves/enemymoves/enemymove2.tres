@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_ygoym")
 Notes = Array[StringName]([&"right", &"left", &"right", &"right", &"down", &"down", &"up", &"down", &"left", &"left", &"left", &"down", &"right", &"up", &"down"])
-Timings = Array[float]([0.2, 0.8, 0.2, 0.1, 0.5, 0.4, 0.1, 0.1, 0.1, 0.2, 0.3, 0.3, 0.4, 0.6, 1.0])
+Timings = Array[float]([0.2, 0.8, 0.2, 0.8, 0.2, 0.1, 0.1, 0.8, 0.2, 0.2, 0.5, 0.4, 0.4, 0.4, 1.0])
 Multiplier = 1.0

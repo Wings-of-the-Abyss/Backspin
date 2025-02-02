@@ -20,7 +20,6 @@ func _ready():
 	var movelist = DirAccess.get_files_at(movePath)
 	for M in movelist:
 		MoveDeck.append(load(movePath + M))
-		print((movePath+M))
 	died.connect(TurnManager.on_death)
 
 func update_hype(amount: int):
@@ -31,6 +30,7 @@ func update_hype(amount: int):
 		HypeMax.emit()
 		get_tree().get_first_node_in_group("player").hypehit()
 		HP = 100
+		damage_taken.emit()
 		Hype = 0
 
 func deal_damage(amount: int) -> void:

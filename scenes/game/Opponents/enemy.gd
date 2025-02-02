@@ -2,6 +2,7 @@ extends AnimatedSprite3D
 
 @export var EnemyMoves: Array[Move] = []
 var Health: float = 100
+var Hype: float = 0.0
 @onready var anims = $AnimationPlayer
 
 signal downed
@@ -16,6 +17,11 @@ func take_damage(amount: float) -> void:
 	if Health <= 0:
 		downed.emit()
 		anims.play("die")
+
+func _process(_delta):
+	if Hype >= 100.0:
+		Health = min(100.0, Health + 100/3)
+		Hype = 0
 
 func EnemyNote(n: StringName):
 	match n:

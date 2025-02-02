@@ -15,9 +15,9 @@ script = ExtResource("1_rcqrp")
 [node name="Notecatcher" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -183.0
-offset_top = 25.0
+offset_top = 21.0
 offset_right = 1162.0
-offset_bottom = 395.0
+offset_bottom = 391.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_guifo")
 stretch_mode = 2

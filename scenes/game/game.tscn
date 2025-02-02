@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cbx4ekddo1dpc"]
+[gd_scene load_steps=64 format=3 uid="uid://cbx4ekddo1dpc"]
 
 [ext_resource type="PackedScene" uid="uid://bholuvfuiblp1" path="res://scenes/game/fight/note_handler.tscn" id="1_ymu70"]
 [ext_resource type="PackedScene" uid="uid://dlla330gdcucj" path="res://scenes/game/fight/fight_ui/move_deck.tscn" id="2_vtpkq"]
@@ -9,13 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://cgr8bg3m2jw2" path="res://assets/characters/playerchar/idle animation character sprite.png" id="6_d67uy"]
 [ext_resource type="Texture2D" uid="uid://d1tisnlpwjiyb" path="res://assets/ui/HP.png" id="6_rrr83"]
 [ext_resource type="Texture2D" uid="uid://c2swg8fmeies0" path="res://assets/characters/playerchar/boss character move 2 step-Sheet.png" id="7_a32pi"]
+[ext_resource type="Texture2D" uid="uid://dkjibymkil15s" path="res://assets/ui/Hype.png" id="7_v44ek"]
 [ext_resource type="Texture2D" uid="uid://dxme31jjm1ndy" path="res://assets/ui/HP_progress.png" id="7_vfpnk"]
 [ext_resource type="Texture2D" uid="uid://djon6pveqkj7f" path="res://assets/characters/playerchar/move 5 brj-Sheet.png" id="7_yokks"]
 [ext_resource type="Texture2D" uid="uid://dyj55cnxa2pjq" path="res://assets/characters/playerchar/bossrush jam move 4-Sheet.png" id="8_2ppmh"]
 [ext_resource type="Script" path="res://scenes/game/ui/enemy_hp.gd" id="8_7aaci"]
 [ext_resource type="Texture2D" uid="uid://dyvs4n7c1y5if" path="res://assets/characters/playerchar/boss rush jam character animmove 3-Sheet.png" id="8_xvbhf"]
+[ext_resource type="Script" path="res://scenes/game/ui/enemy_hype.gd" id="9_48nf7"]
 [ext_resource type="Script" path="res://scenes/game/ui/Scoretext.gd" id="9_mlaju"]
 [ext_resource type="Texture2D" uid="uid://3rvxoslkb28r" path="res://assets/characters/playerchar/bossrush jam character spin.png" id="9_rmgn5"]
+[ext_resource type="Texture2D" uid="uid://cqrl234pjjuo" path="res://assets/ui/Hype_progress.png" id="10_8ni22"]
 [ext_resource type="Script" path="res://scenes/game/characterstuff/player_sprite.gd" id="11_3xchw"]
 [ext_resource type="Texture2D" uid="uid://qipp1ytunt6f" path="res://assets/characters/playerchar/bossrush character death anim-Sheet.png" id="11_rhiqe"]
 [ext_resource type="PackedScene" uid="uid://dhfv43lgecgnq" path="res://scenes/game/Opponents/enemy_1.tscn" id="17_wwwsg"]
@@ -428,6 +431,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7fexl"]
 resource_name = "downHit"
@@ -603,6 +618,21 @@ _data = {
 "upHit": SubResource("Animation_40ebn")
 }
 
+[sub_resource type="Animation" id="Animation_kahd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-9, 21.9041, -7)]
+}
+
 [sub_resource type="Animation" id="Animation_byfml"]
 resource_name = "Remove_dead"
 step = 0.0833333
@@ -617,21 +647,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-9, 21.9041, -7), Vector3(-9, 21.9041, -7), Vector3(-66.9841, 21.9041, -7)]
-}
-
-[sub_resource type="Animation" id="Animation_kahd4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-9, 21.9041, -7)]
 }
 
 [sub_resource type="Animation" id="Animation_g63js"]
@@ -692,6 +707,18 @@ nine_patch_stretch = true
 texture_under = ExtResource("6_rrr83")
 texture_progress = ExtResource("7_vfpnk")
 script = ExtResource("8_7aaci")
+
+[node name="EnemyHype" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 384.0
+offset_top = 31.0
+offset_right = 448.0
+offset_bottom = 95.0
+scale = Vector2(-0.5, 0.5)
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_v44ek")
+texture_progress = ExtResource("10_8ni22")
+script = ExtResource("9_48nf7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {

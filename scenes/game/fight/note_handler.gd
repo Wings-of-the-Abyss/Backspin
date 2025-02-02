@@ -18,7 +18,7 @@ const ARROW_LEFT = preload("res://assets/arrows/Arrowgreen_single.png")
 const ARROW_RIGHT = preload("res://assets/arrows/Arroworange_single.png")
 const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 
-var note_startY = 1024.0
+var note_startY = 900
 
 @export var enemy: bool = false
 
@@ -37,59 +37,57 @@ func _ready():
 	down.show()
 
 func _physics_process(_delta):
-	if TurnManager.dead: return
-	if TurnManager.active_notes.is_empty(): return
-	for N in FallingNotes.keys():
-		if N.time_window < -0.5: continue
-		var input = (
-			(Input.is_action_just_pressed("left") and N.assigned_input ==  &"left") or
-			(Input.is_action_just_pressed("up") and N.assigned_input ==  &"up") or
-			(Input.is_action_just_pressed("right") and N.assigned_input ==  &"right") or
-			(Input.is_action_just_pressed("down") and N.assigned_input ==  &"down")
-			)
-		
-		var hype: int = 0
-		if input:
-			var poptime = abs(N.time_window)
-			if poptime*100 < 5.0:
-				get_tree().get_first_node_in_group("player").NoteHit(N.assigned_input)
-				FreedNotes.append(N)
-				FallingNotes.get(N).hide()
-				hype += floor(10 * N.hype_mult)
-				hit_audio(N.assigned_input)
-				print("Hit!")
-			else:
-				hype = -30
-				print("miss...")
-				if !TurnManager.turn:
-					PlayerData.deal_damage(10)
-		
-		if hype != 0: 
-			PlayerData.update_hype(hype)
-			return
-
-func _process(delta):
-	if FallingNotes.is_empty(): return
-	for N in FallingNotes.keys():
-		if N.time_window <= -0.5 and !FreedNotes.has(N):
-			FreedNotes.append(N)
-			PlayerData.update_hype(-10)
-			if !TurnManager.turn:
-				PlayerData.deal_damage(20)
-			continue
-		N.time_window -= delta/3
-		var node = FallingNotes.get(N)
-		node.position.y = lerpf(notecatcher.position.y, note_startY, N.time_window)
+	if !TurnManager.dead:
+		for N in FallingNotes.keys():
+			if FreedNotes.has(N): continue
+			var input = (
+				(Input.is_action_just_pressed("left") and N.assigned_input ==  &"left") or
+				(Input.is_action_just_pressed("up") and N.assigned_input ==  &"up") or
+				(Input.is_action_just_pressed("right") and N.assigned_input ==  &"right") or
+				(Input.is_action_just_pressed("down") and N.assigned_input ==  &"down")
+				)
+			
+			var hype: int = 0
+			if input:
+				var poptime = abs(N.time_window)
+				if poptime < 0.025:
+					get_tree().get_first_node_in_group("player").NoteHit(N.assigned_input)
+					FreedNotes.append(N)
+					FallingNotes.get(N).hide()
+					hype += floor(10 * N.hype_mult)
+					hit_audio(N.assigned_input)
+					break
+				else:
+					hype = -30
+					if !TurnManager.turn:
+						PlayerData.deal_damage(10)
+						TurnManager.ActiveBoss.Hype += 10.0
+			
+			if hype != 0: 
+				PlayerData.update_hype(hype)
 	
 	note_cleanup()
 
+func _process(delta):
+	if FallingNotes.is_empty():return
+	for N in FallingNotes.keys():
+		if N.time_window <= -0.2 and !FreedNotes.has(N):
+			FreedNotes.append(N)
+			PlayerData.update_hype(-10)
+			if !TurnManager.turn:
+				PlayerData.deal_damage(10)
+			continue
+		N.time_window -= delta/4
+		var node = FallingNotes.get(N)
+		node.position.y = lerpf(notecatcher.position.y+(notecatcher.size*notecatcher.scale).y, note_startY, N.time_window)
+
 func note_cleanup() -> void:
-	if FreedNotes.is_empty(): return
+	if FreedNotes.is_empty() and TurnManager.active_notes.is_empty(): return
 	for FN in FreedNotes:
 		FallingNotes.get(FN)
 		FallingNotes.erase(FN)
-		TurnManager.active_notes.erase(FN)
-	FreedNotes.clear()
+		TurnManager.active_notes.pop_back()
+	
 
 func add_note(type: StringName, id: Note) -> void:
 	var sprite = Sprite2D.new()
@@ -116,9 +114,6 @@ func add_note(type: StringName, id: Note) -> void:
 		add_child(sprite)
 		sprite.position = startpos
 		FallingNotes[id] = sprite
-
-func _on_timer_timeout():
-	note_cleanup()
 
 func hit_audio(type: StringName) -> void:
 	match type:

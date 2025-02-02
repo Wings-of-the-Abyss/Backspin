@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cu8dcmyglkeec" path="res://assets/characters/Grey minion 1/Grey minion move 2/grey minion move 2(crouch)-Sheet.png" id="3_540gf"]
 [ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="3_mtg8m"]
 [ext_resource type="Texture2D" uid="uid://bpl8qk2rxoffm" path="res://assets/characters/Grey minion 1/grey minion move 1/grey minion move 1-Sheet.png" id="3_wk2ag"]
-[ext_resource type="Resource" uid="uid://e5vo7i5tay64" path="res://scenes/game/Moves/enemymoves/enemymove.tres" id="4_cyr3l"]
+[ext_resource type="Resource" uid="uid://e5vo7i5tay64" path="res://scenes/game/Moves/enemymoves/enemymove1.tres" id="4_cyr3l"]
 [ext_resource type="Texture2D" uid="uid://dgcu1gjut1ei2" path="res://assets/characters/Grey minion 1/Grey minion 1 move 3/grey minion 1 move 3-Sheet.png" id="4_d8igh"]
 [ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="9_xyow5"]
 [ext_resource type="Resource" uid="uid://dhhm7a2biwfww" path="res://scenes/game/Moves/enemymoves/enemymove3.tres" id="9_yyuv3"]
@@ -411,7 +411,6 @@ _data = {
 }
 
 [node name="Enemy1" type="AnimatedSprite3D" groups=["enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295547, 0.108566, 0.0639776)
 flip_h = true
 alpha_cut = 1
 texture_filter = 0

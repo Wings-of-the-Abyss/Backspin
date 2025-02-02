@@ -337,7 +337,6 @@ _data = {
 }
 
 [node name="Enemy2" type="AnimatedSprite3D" groups=["enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295547, 0.108566, 0.0639776)
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
