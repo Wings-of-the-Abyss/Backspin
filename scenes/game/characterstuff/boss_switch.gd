@@ -12,9 +12,9 @@ const ENEMY_ORDER = [
 	ENEMY_3,
 	ENEMY_4,
 	ENEMY_5
-	
 ]
 
+var index = 0
 func _enter_tree():
 	TurnManager.boss_down.connect(remove_old)
 
@@ -27,12 +27,10 @@ func remove_old():
 	add_new()
 
 func add_new():
-	var index = TurnManager.BossIndex
+	index += 1
 	if index >= ENEMY_ORDER.size():
-		print("out of bosses :( ")
-		await get_tree().create_timer(5.0).timeout
-		TurnManager.on_death()
-		return
+		index = 0
+		TurnManager.BossIndex = 0
 	var e = ENEMY_ORDER[index].instantiate()
 	get_tree().root.get_node("/root/Game").add_child(e)
 	e.position = Vector3(-9, 50, -7)

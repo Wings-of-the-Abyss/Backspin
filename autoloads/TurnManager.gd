@@ -47,6 +47,7 @@ func reset() -> void:
 	active_notes.clear()
 	queue.clear()
 	enemymove_index = 0
+	BossIndex = 0
 	while !note_handler or !enemy_note:
 		note_handler = get_tree().get_first_node_in_group("note-handler")
 		enemy_note = get_tree().get_first_node_in_group("enemy-note")
@@ -64,6 +65,7 @@ func player_turn() -> void:
 
 ##Sequence of events for the enemy's turn
 func enemy_turn() -> void:
+	if turn: turn_switch()
 	enemy_turn_started.emit()
 	await enemy_pick_move()
 	enemy_execute_move()
@@ -89,11 +91,12 @@ func on_death() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu/main menu.tscn")
 
 func switch_boss() -> void:
-	BossIndex += 1
 	boss_down.emit()
+	BossIndex += 1
 	note_handler.clear_notes()
 	enemy_note.clear_notes()
 	turn = false
+	turn_switch()
 
 #region Player Move Stuff
 func selection_complete() -> void:

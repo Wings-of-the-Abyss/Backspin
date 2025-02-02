@@ -27,6 +27,5 @@ func _on_play_pressed():
 	PlayerData.ActionPoints.clear()
 	await get_tree().create_timer(1.0).timeout
 	PlayerData.HP = 100
-	TurnManager.turn = false
 	TurnManager.reset()
 	get_tree().change_scene_to_file("res://scenes/game/game.tscn")

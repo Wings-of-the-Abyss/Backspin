@@ -10,7 +10,6 @@ signal downed
 func _ready():
 	Health = 500.0
 	Hype = 0.0
-	PlayerData.NoteHit.connect(take_damage)
 	TurnManager.set("ActiveBoss", self)
 
 func take_damage(amount: float) -> void:
