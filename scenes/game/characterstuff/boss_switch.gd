@@ -8,10 +8,14 @@ const ENEMY_5 = preload("res://scenes/game/Opponents/enemy_5.tscn")
 
 const ENEMY_ORDER = [
 	ENEMY_1,
-	ENEMY_2
+	ENEMY_2,
+	ENEMY_3,
+	ENEMY_4,
+	ENEMY_5
+	
 ]
 
-func _ready():
+func _enter_tree():
 	TurnManager.boss_down.connect(remove_old)
 
 func remove_old():

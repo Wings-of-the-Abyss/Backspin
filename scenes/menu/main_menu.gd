@@ -4,7 +4,7 @@ extends Control
 @onready var click = $click
 
 func _ready() -> void:
-	pass
+	TurnManager.game_loop = false
 
 func _on_buttons_mouse_entered() -> void:
 	$hover.play()
@@ -24,5 +24,9 @@ func _on_options_pressed() -> void:
 func _on_play_pressed():
 	click.play()
 	transition.play("fade-out")
+	PlayerData.ActionPoints.clear()
 	await get_tree().create_timer(1.0).timeout
+	PlayerData.HP = 100
+	TurnManager.turn = false
+	TurnManager.reset()
 	get_tree().change_scene_to_file("res://scenes/game/game.tscn")

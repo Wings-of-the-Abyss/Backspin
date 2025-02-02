@@ -30,6 +30,8 @@ var BossIndex = 0
 
 var dead = false
 
+var game_loop: bool = false
+
 var ActiveBoss:
 	set(boss):
 		while !enemy_note:
@@ -38,9 +40,13 @@ var ActiveBoss:
 		enemy_note.move.connect(boss.EnemyNote)
 		boss.downed.connect(switch_boss)
 		ActiveBoss = boss
-		
 
-func _ready():
+func reset() -> void:
+	dead = false
+	turn = false
+	active_notes.clear()
+	queue.clear()
+	enemymove_index = 0
 	while !note_handler or !enemy_note:
 		note_handler = get_tree().get_first_node_in_group("note-handler")
 		enemy_note = get_tree().get_first_node_in_group("enemy-note")

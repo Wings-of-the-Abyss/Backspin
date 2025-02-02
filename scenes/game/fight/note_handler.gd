@@ -36,6 +36,10 @@ func _ready():
 	await down.finished
 	down.show()
 
+func _enter_tree():
+	FallingNotes.clear()
+	FreedNotes.clear()
+
 func _physics_process(_delta):
 	if !TurnManager.dead:
 		for N in FallingNotes.keys():
@@ -63,7 +67,6 @@ func _physics_process(_delta):
 				else:
 					hype = -30
 					if !TurnManager.turn:
-						PlayerData.deal_damage(10)
 						TurnManager.ActiveBoss.Hype += 10.0
 					PlayerData.update_hype(hype)
 	
@@ -75,6 +78,7 @@ func _process(delta):
 		if N.time_window <= -0.2 and !FreedNotes.has(N):
 			FreedNotes.append(N)
 			PlayerData.update_hype(-10)
+			TurnManager.ActiveBoss.Hype += 10
 			if !TurnManager.turn:
 				PlayerData.deal_damage(10)
 			continue

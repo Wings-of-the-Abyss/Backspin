@@ -18,6 +18,8 @@ func NoteHit(n: StringName):
 
 func MoveHit(M: StringName) -> void:
 	player_anim.play(M)
+	await player_anim.animation_finished
+	player_anim.play("idle")
 
 func hypehit() -> void:
 	player_anim.play("hype")

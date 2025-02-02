@@ -29,7 +29,9 @@ const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 @onready var animation_player = $AnimationPlayer
 @onready var APdisplay = $HBoxContainer/Control/HBoxContainer2
 
-func _ready():
+func _enter_tree():
+	if !h_box_container or !APdisplay:
+		await get_tree().create_timer(0.01).timeout
 	TurnManager.player_turn_started.connect(show_hand)
 	show_hand()
 

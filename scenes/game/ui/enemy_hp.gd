@@ -3,7 +3,6 @@ extends TextureProgressBar
 func _process(_delta):
 	if !TurnManager.ActiveBoss: return
 	if value != TurnManager.ActiveBoss.Health:
-		print(TurnManager.ActiveBoss.Health)
 		update()
 
 func update() -> void:

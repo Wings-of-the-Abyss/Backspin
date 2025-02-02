@@ -17,7 +17,7 @@ const SongList: Dictionary = {
 	4: afroguy
 }
 
-func _ready():
+func _enter_tree():
 	stream = Battle1
 	TurnManager.boss_down.connect(next_song)
 	next_song()
