@@ -52,7 +52,6 @@ func player_turn() -> void:
 	PlayerData.ActionPoints.append_array(actionpoint_refresh)
 	player_turn_started.emit()
 	await execute_moves
-	await get_tree().create_timer(1.0).timeout
 	execute_queue()
 	await execution_complete
 	turn_switch()
@@ -68,8 +67,7 @@ func enemy_turn() -> void:
 ##Turn switcher
 func turn_switch() -> void:
 	if dead: return
-	while !enemy_note.FallingNotes.is_empty() or !note_handler.FallingNotes.is_empty() or !ActiveBoss:
-		await get_tree().create_timer(0.01).timeout
+	while !active_notes.is_empty(): await get_tree().create_timer(0.01).timeout
 	await get_tree().create_timer(1.0).timeout
 	if turn:
 		enemy_turn()
@@ -120,7 +118,8 @@ func execute_queue() -> void:
 
 ##Executes the sequence of notes
 func play_move(move: Move) -> void:
-	get_tree().get_first_node_in_group("player").MoveHit(move.AnimName)
+	if turn:
+		get_tree().get_first_node_in_group("player").MoveHit(move.AnimName)
 	for i in range(move.Notes.size()):
 		var note_type = move.Notes[i]
 		var note = Note.new()
@@ -139,7 +138,7 @@ func enemy_pick_move():
 	enemy_move = enemy.EnemyMoves.pick_random()
 
 func enemy_execute_move() -> void:
-	if turn: return
+	while turn: await get_tree().create_timer(0.01).timeout
 	play_move(enemy_move)
 	for i in range(enemy_move.Notes.size()):
 		var newnote = Note.new()

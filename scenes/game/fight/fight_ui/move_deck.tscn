@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlla330gdcucj"]
+[gd_scene load_steps=10 format=3 uid="uid://dlla330gdcucj"]
 
 [ext_resource type="Script" path="res://scenes/game/fight/fight_ui/move_deck.gd" id="1_qmlsu"]
 [ext_resource type="Texture2D" uid="uid://bechtpvf8jvdh" path="res://assets/ui/Move_card.png" id="2_rme4u"]
 [ext_resource type="Texture2D" uid="uid://boneoglyiy4we" path="res://assets/arrows/Arrowgreen_single.png" id="3_k2tg0"]
 [ext_resource type="Texture2D" uid="uid://c60xqp6tiot1c" path="res://assets/arrows/Arroworange_single.png" id="4_xhs8i"]
 [ext_resource type="Texture2D" uid="uid://b161m6chm1fhq" path="res://assets/arrows/Arrowblue_single.png" id="5_me8un"]
+[ext_resource type="Texture2D" uid="uid://ocwrofqymbf3" path="res://assets/arrows/Arrowred_single.png" id="6_ofsbr"]
 
 [sub_resource type="Animation" id="Animation_fouvi"]
 length = 0.001
@@ -185,6 +186,7 @@ offset_right = -257.318
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_me8un")
 
 [node name="Arrow2" type="TextureRect" parent="HBoxContainer/move2"]
 show_behind_parent = true
@@ -200,6 +202,7 @@ offset_right = -7.02222
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_xhs8i")
 
 [node name="Arrow3" type="TextureRect" parent="HBoxContainer/move2"]
 show_behind_parent = true
@@ -215,6 +218,7 @@ offset_right = 252.806
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_ofsbr")
 
 [node name="Arrow4" type="TextureRect" parent="HBoxContainer/move2"]
 show_behind_parent = true
@@ -271,6 +275,7 @@ offset_right = -7.02148
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_ofsbr")
 
 [node name="Arrow3" type="TextureRect" parent="HBoxContainer/move3"]
 show_behind_parent = true
@@ -286,6 +291,7 @@ offset_right = 252.806
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_k2tg0")
 
 [node name="Arrow4" type="TextureRect" parent="HBoxContainer/move3"]
 show_behind_parent = true
@@ -328,6 +334,7 @@ offset_right = -257.318
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_me8un")
 
 [node name="Arrow2" type="TextureRect" parent="HBoxContainer/move4"]
 show_behind_parent = true
@@ -343,6 +350,7 @@ offset_right = -7.02197
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_k2tg0")
 
 [node name="Arrow3" type="TextureRect" parent="HBoxContainer/move4"]
 show_behind_parent = true
@@ -358,6 +366,7 @@ offset_right = 252.806
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_ofsbr")
 
 [node name="Arrow4" type="TextureRect" parent="HBoxContainer/move4"]
 show_behind_parent = true
@@ -400,6 +409,7 @@ offset_right = -257.318
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_me8un")
 
 [node name="Arrow2" type="TextureRect" parent="HBoxContainer/move5"]
 show_behind_parent = true
@@ -415,6 +425,7 @@ offset_right = -7.02197
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_ofsbr")
 
 [node name="Arrow3" type="TextureRect" parent="HBoxContainer/move5"]
 show_behind_parent = true
@@ -430,6 +441,7 @@ offset_right = 252.806
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_xhs8i")
 
 [node name="Arrow4" type="TextureRect" parent="HBoxContainer/move5"]
 show_behind_parent = true

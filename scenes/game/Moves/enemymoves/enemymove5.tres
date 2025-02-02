@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_cpvls")
 Notes = Array[StringName]([&"left", &"right", &"left", &"down", &"right", &"right", &"up", &"left", &"down", &"down", &"left", &"up", &"down", &"right", &"down"])
+Cost = Array[StringName]([])
+AnimName = &""
 Timings = Array[float]([0.1, 0.1, 0.1, 0.5, 0.1, 0.1, 0.1, 0.8, 0.8, 0.5, 0.1, 0.3, 0.2, 0.2, 1.0])
 Multiplier = 1.0

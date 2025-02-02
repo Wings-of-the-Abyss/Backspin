@@ -30,14 +30,13 @@ const ARROW_UP = preload("res://assets/arrows/Arrowred_single.png")
 @onready var APdisplay = $HBoxContainer/Control/HBoxContainer2
 
 func _ready():
-	randomize()
 	TurnManager.player_turn_started.connect(show_hand)
-	animation_player.play_backwards("down")
-	show()
+	show_hand()
 
 func show_hand() -> void:
-	animation_player.play_backwards("down")
 	set_deck_visible(true)
+	refreshAPDisplay()
+	animation_player.play_backwards("down")
 
 func _unhandled_input(_event) -> void:
 	if TurnManager.queue.size() > 0 and Input.is_action_just_pressed("ui_accept"):
@@ -84,6 +83,7 @@ func refreshAPDisplay() -> void:
 func set_deck_visible(b: bool) -> void:
 	for B in h_box_container.get_children():
 		B.visible = b
+	APdisplay.visible = b
 
 func _on_move_1_button_down() -> void:
 	if TurnManager.add_move_to_queue(hand[0]):

@@ -56,7 +56,8 @@ func _physics_process(_delta):
 					FallingNotes.get(N).hide()
 					hype += floor(10 * N.hype_mult)
 					hit_audio(N.assigned_input)
-					TurnManager.ActiveBoss.take_damage(10)
+					if TurnManager.turn:
+						TurnManager.ActiveBoss.take_damage(10)
 					PlayerData.update_hype(hype)
 					break
 				else:

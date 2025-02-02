@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bajoekqvbeu17"
-path.s3tc="res://.godot/imported/character sprite boss rush final.png-9910b617de71b8c2c77e0216666fb7f6.s3tc.ctex"
+path="res://.godot/imported/character sprite boss rush final.png-9910b617de71b8c2c77e0216666fb7f6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/characters/playerchar/character sprite boss rush final.png"
-dest_files=["res://.godot/imported/character sprite boss rush final.png-9910b617de71b8c2c77e0216666fb7f6.s3tc.ctex"]
+dest_files=["res://.godot/imported/character sprite boss rush final.png-9910b617de71b8c2c77e0216666fb7f6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

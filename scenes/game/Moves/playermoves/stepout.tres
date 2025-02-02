@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_rbjlm")
 Notes = Array[StringName]([&"down", &"left", &"up", &"left", &"left", &"right", &"down", &"left", &"left", &"up", &"right", &"right", &"left", &"right", &"up"])
-Cost = Array[StringName]([&"down", &"right", &"down", &"up"])
+Cost = Array[StringName]([&"down", &"right", &"left", &"up"])
 AnimName = &"stepout"
 Timings = Array[float]([0.2, 0.2, 0.4, 0.4, 0.2, 0.2, 0.4, 0.4, 0.3, 0.3, 0.2, 0.5, 0.5, 0.2, 0.2])
 Multiplier = 1.0

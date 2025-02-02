@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_3m5kj")
 Notes = Array[StringName]([&"left", &"right", &"left", &"right", &"up", &"down", &"up", &"down", &"left", &"right", &"down", &"down", &"right", &"left", &"down"])
+Cost = Array[StringName]([])
+AnimName = &""
 Timings = Array[float]([0.1, 0.1, 0.1, 0.5, 0.1, 0.1, 0.1, 0.8, 0.8, 0.5, 0.1, 0.3, 0.2, 0.2, 1.0])
 Multiplier = 1.0

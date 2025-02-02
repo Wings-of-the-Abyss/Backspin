@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_rcdmi")
 Notes = Array[StringName]([&"right", &"left", &"up", &"right", &"up", &"left", &"down", &"left", &"right", &"left", &"left", &"up", &"right", &"down", &"left"])
-Cost = Array[StringName]([&"up", &"left", &"left", &""])
+Cost = Array[StringName]([&"up", &"left", &"", &""])
 AnimName = &"stepin"
 Timings = Array[float]([0.3, 0.3, 0.4, 0.2, 0.2, 0.2, 0.4, 0.2, 0.4, 0.5, 0.2, 0.4, 0.5, 0.2, 0.2])
 Multiplier = 1.0
