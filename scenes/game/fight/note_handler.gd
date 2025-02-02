@@ -61,7 +61,7 @@ func _physics_process(_delta):
 					hype += floor(10 * N.hype_mult)
 					hit_audio(N.assigned_input)
 					if TurnManager.turn:
-						TurnManager.ActiveBoss.take_damage(500)
+						TurnManager.ActiveBoss.take_damage(10)
 					PlayerData.update_hype(hype)
 					break
 				else:

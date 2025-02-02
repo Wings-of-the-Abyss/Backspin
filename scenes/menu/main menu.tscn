@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjlygdna7gbq3"]
+[gd_scene load_steps=17 format=3 uid="uid://bjlygdna7gbq3"]
 
-[ext_resource type="Texture2D" uid="uid://cd4hlrl5d5tcf" path="res://assets/backgrounds/neon-hot-pink-hd-landscape.jpg" id="1_8epr1"]
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_w0fda"]
-[ext_resource type="Shader" path="res://scenes/menu/panel.gdshader" id="3_5d0x0"]
+[ext_resource type="Texture2D" uid="uid://oqbmdii2crmd" path="res://assets/backgrounds/menu_wall.png" id="2_5y4cm"]
 [ext_resource type="Texture2D" uid="uid://lacd8v6d8jju" path="res://assets/ui/Start_Button.png" id="3_jdxg7"]
 [ext_resource type="AudioStream" uid="uid://wugwq013fwdi" path="res://assets/sfx/hover.wav" id="4_ebqsn"]
 [ext_resource type="Texture2D" uid="uid://cnujj135bb7lc" path="res://assets/ui/Options_Button.png" id="4_f4o45"]
@@ -10,16 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://tbr2w71rtxs8" path="res://assets/ui/Collections_Button.png" id="6_n1jjc"]
 [ext_resource type="AudioStream" uid="uid://dnhkxpdpcsemr" path="res://assets/musics/Step Back - Menu Theme.mp3" id="9_iajf4"]
 [ext_resource type="AudioStream" uid="uid://c30yxwbusdkwr" path="res://assets/sfx/click sfx (consolidated).wav" id="10_rb10f"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mw15r"]
-shader = ExtResource("3_5d0x0")
-shader_parameter/zoom = 1.0
-shader_parameter/wave_crop = 0.0
-shader_parameter/brightness = 1.0
-shader_parameter/speed = 1.0
-shader_parameter/iterations = 5.0
-shader_parameter/freq_start = 20.0
-shader_parameter/freq_coeff = 1.0
 
 [sub_resource type="Gradient" id="Gradient_1761r"]
 colors = PackedColorArray(0, 0, 0, 0.286275, 0, 0, 0, 0)
@@ -142,14 +131,13 @@ grow_vertical = 2
 script = ExtResource("1_w0fda")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_mw15r")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_8epr1")
+texture = ExtResource("2_5y4cm")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
@@ -233,7 +221,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_iajf4")
-volume_db = 3.0
+volume_db = 5.0
 autoplay = true
 bus = &"Songs"
 parameters/looping = true
