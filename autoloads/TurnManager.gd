@@ -30,7 +30,7 @@ var BossIndex = 0
 
 var dead = false
 
-var game_loop: bool = false
+var break_loop: bool = false
 
 var ActiveBoss:
 	set(boss):
@@ -44,6 +44,7 @@ var ActiveBoss:
 func reset() -> void:
 	dead = false
 	turn = false
+	break_loop = false
 	active_notes.clear()
 	queue.clear()
 	enemymove_index = 0
@@ -56,6 +57,7 @@ func reset() -> void:
 
 ##Sequence of events for the Player's turn
 func player_turn() -> void:
+	turn = true
 	PlayerData.ActionPoints.append_array(actionpoint_refresh)
 	player_turn_started.emit()
 	await execute_moves
@@ -65,23 +67,33 @@ func player_turn() -> void:
 
 ##Sequence of events for the enemy's turn
 func enemy_turn() -> void:
-	if turn: turn_switch()
+	turn = false
 	enemy_turn_started.emit()
 	await enemy_pick_move()
 	enemy_execute_move()
 	await enemy_execution_complete
 	turn_switch()
 
+func reset_turns() -> void:
+	break_loop = true
+	active_notes.clear()
+	queue.clear()
+	note_handler.clear_notes()
+	enemy_note.clear_notes()
+	player_turn()
+
 ##Turn switcher
 func turn_switch() -> void:
 	if dead: return
-	while !active_notes.is_empty(): await get_tree().create_timer(0.01).timeout
+	if break_loop:
+		break_loop = false
+		return
+	while !active_notes.is_empty() or !queue.is_empty(): await get_tree().create_timer(0.01).timeout
 	await get_tree().create_timer(1.0).timeout
 	if turn:
 		enemy_turn()
 	else:
 		player_turn()
-	turn = !turn
 
 func on_death() -> void:
 	if dead: return
@@ -93,10 +105,7 @@ func on_death() -> void:
 func switch_boss() -> void:
 	boss_down.emit()
 	BossIndex += 1
-	note_handler.clear_notes()
-	enemy_note.clear_notes()
-	turn = false
-	turn_switch()
+	reset_turns()
 
 #region Player Move Stuff
 func selection_complete() -> void:
@@ -147,7 +156,7 @@ func enemy_pick_move():
 	enemy_move = enemy.EnemyMoves.pick_random()
 
 func enemy_execute_move() -> void:
-	while turn: await get_tree().create_timer(0.01).timeout
+	if turn: return
 	play_move(enemy_move)
 	for i in range(enemy_move.Notes.size()):
 		var newnote = Note.new()

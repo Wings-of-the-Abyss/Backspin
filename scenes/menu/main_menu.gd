@@ -3,9 +3,6 @@ extends Control
 @onready var transition: AnimationPlayer = $transition
 @onready var click = $click
 
-func _ready() -> void:
-	TurnManager.game_loop = false
-
 func _on_buttons_mouse_entered() -> void:
 	$hover.play()
 
