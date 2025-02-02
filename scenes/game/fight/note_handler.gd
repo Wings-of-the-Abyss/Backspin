@@ -50,12 +50,13 @@ func _physics_process(_delta):
 			var hype: int = 0
 			if input:
 				var poptime = abs(N.time_window)
-				if poptime < 0.025:
+				if poptime < 0.03:
 					get_tree().get_first_node_in_group("player").NoteHit(N.assigned_input)
 					FreedNotes.append(N)
 					FallingNotes.get(N).hide()
 					hype += floor(10 * N.hype_mult)
 					hit_audio(N.assigned_input)
+					TurnManager.ActiveBoss.take_damage(10)
 					break
 				else:
 					hype = -30
@@ -79,7 +80,7 @@ func _process(delta):
 			continue
 		N.time_window -= delta/4
 		var node = FallingNotes.get(N)
-		node.position.y = lerpf(notecatcher.position.y+(notecatcher.size*notecatcher.scale).y, note_startY, N.time_window)
+		node.position.y = lerpf(notecatcher.position.y+(notecatcher.size*notecatcher.scale).y/2, note_startY, N.time_window)
 
 func note_cleanup() -> void:
 	if FreedNotes.is_empty() and TurnManager.active_notes.is_empty(): return

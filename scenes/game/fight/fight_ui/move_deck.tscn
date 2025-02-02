@@ -77,10 +77,10 @@ script = ExtResource("1_qmlsu")
 
 [node name="HBoxContainer" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 360.0
-offset_top = 360.0
-offset_right = 360.0
-offset_bottom = 360.0
+offset_left = 357.0
+offset_top = 410.0
+offset_right = 357.0
+offset_bottom = 410.0
 scale = Vector2(0.209753, 0.209753)
 
 [node name="move1" type="TextureButton" parent="HBoxContainer"]
@@ -372,10 +372,9 @@ grow_vertical = 2
 top_level = true
 layout_mode = 1
 anchors_preset = 0
-offset_left = 280.0
-offset_top = 62.0
-offset_right = 358.0
-offset_bottom = 84.0
+offset_top = 21.0
+offset_right = 78.0
+offset_bottom = 43.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Control"]
 layout_mode = 1

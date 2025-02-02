@@ -12,7 +12,7 @@ func _ready():
 	TurnManager.set("ActiveBoss", self)
 
 func take_damage(amount: float) -> void:
-	if !TurnManager.turn: return
+	if !TurnManager.turn: amount /= 2
 	Health -= amount
 	if Health <= 0:
 		downed.emit()

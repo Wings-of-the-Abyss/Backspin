@@ -24,7 +24,8 @@ func _ready():
 
 func update_hype(amount: int):
 	Hype = max(0, Hype+amount)
-	NoteHit.emit(amount)
+	if amount > 0:
+		NoteHit.emit(amount)
 	hype_updated.emit()
 	if Hype >= 100:
 		HypeMax.emit()

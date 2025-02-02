@@ -41,8 +41,10 @@ var ActiveBoss:
 		
 
 func _ready():
-	note_handler = get_tree().get_first_node_in_group("note-handler")
-	enemy_note = get_tree().get_first_node_in_group("enemy-note")
+	while !note_handler or !enemy_note:	
+		note_handler = get_tree().get_first_node_in_group("note-handler")
+		enemy_note = get_tree().get_first_node_in_group("enemy-note")
+		await get_tree().create_timer(0.01).timeout
 	turn_switch()
 
 ##Sequence of events for the Player's turn
@@ -65,9 +67,11 @@ func enemy_turn() -> void:
 
 ##Turn switcher
 func turn_switch() -> void:
-	while !active_notes.is_empty():
+	if dead: return
+	while !enemy_note.FallingNotes.is_empty() or !note_handler.FallingNotes.is_empty():
 		await get_tree().create_timer(0.01).timeout
 	await get_tree().create_timer(1.0).timeout
+	print(ActiveBoss.Health)
 	if turn:
 		enemy_turn()
 	else:

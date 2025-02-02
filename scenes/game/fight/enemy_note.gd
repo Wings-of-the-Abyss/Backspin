@@ -17,13 +17,13 @@ signal move(n: StringName)
 func _process(delta):
 	if FallingNotes.is_empty(): return
 	for N in FallingNotes.keys():
-		if N.time_window < 0:
+		if snappedf(N.time_window, 0.01) == 0:
 			FreedNotes.append(N)
 			FallingNotes.get(N).hide()
 			move.emit(N.assigned_input)
 		N.time_window -= delta/4
 		var node = FallingNotes.get(N)
-		node.position.y = lerpf(notecatcher.position.y+(notecatcher.size*notecatcher.scale).y, note_startY, N.time_window)
+		node.position.y = lerpf(notecatcher.position.y+(notecatcher.size*notecatcher.scale).y/2, note_startY, N.time_window)
 	
 	note_cleanup()
 
