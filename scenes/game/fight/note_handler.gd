@@ -85,10 +85,11 @@ func _process(delta):
 func note_cleanup() -> void:
 	if FreedNotes.is_empty() and TurnManager.active_notes.is_empty(): return
 	for FN in FreedNotes:
-		FallingNotes.get(FN)
+		if !FallingNotes.has(FN): continue
+		FallingNotes.get(FN).queue_free()
 		FallingNotes.erase(FN)
 		TurnManager.active_notes.pop_back()
-	
+	FreedNotes.clear()
 
 func add_note(type: StringName, id: Note) -> void:
 	var sprite = Sprite2D.new()
@@ -115,6 +116,10 @@ func add_note(type: StringName, id: Note) -> void:
 		add_child(sprite)
 		sprite.position = startpos
 		FallingNotes[id] = sprite
+
+func clear_notes():
+	for N in FallingNotes.keys():
+		FreedNotes.append(N)
 
 func hit_audio(type: StringName) -> void:
 	match type:

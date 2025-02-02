@@ -36,6 +36,10 @@ func note_cleanup() -> void:
 		TurnManager.active_notes.pop_back()
 	FreedNotes.clear()
 
+func clear_notes():
+	for N in FallingNotes.keys():
+		FreedNotes.append(N)
+
 func add_note(type: StringName, id: Note) -> void:
 	var sprite = Sprite2D.new()
 	var texture

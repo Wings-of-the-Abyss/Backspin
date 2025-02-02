@@ -41,7 +41,7 @@ var ActiveBoss:
 		
 
 func _ready():
-	while !note_handler or !enemy_note:	
+	while !note_handler or !enemy_note:
 		note_handler = get_tree().get_first_node_in_group("note-handler")
 		enemy_note = get_tree().get_first_node_in_group("enemy-note")
 		await get_tree().create_timer(0.01).timeout
@@ -68,10 +68,9 @@ func enemy_turn() -> void:
 ##Turn switcher
 func turn_switch() -> void:
 	if dead: return
-	while !enemy_note.FallingNotes.is_empty() or !note_handler.FallingNotes.is_empty():
+	while !enemy_note.FallingNotes.is_empty() or !note_handler.FallingNotes.is_empty() or !ActiveBoss:
 		await get_tree().create_timer(0.01).timeout
 	await get_tree().create_timer(1.0).timeout
-	print(ActiveBoss.Health)
 	if turn:
 		enemy_turn()
 	else:
@@ -88,7 +87,9 @@ func on_death() -> void:
 func switch_boss() -> void:
 	BossIndex += 1
 	boss_down.emit()
-	
+	note_handler.clear_notes()
+	enemy_note.clear_notes()
+	turn = false
 
 #region Player Move Stuff
 func selection_complete() -> void:
@@ -133,12 +134,11 @@ func play_move(move: Move) -> void:
 #region Enemy Move stuff
 
 func enemy_pick_move():
-	var enemy = get_tree().get_first_node_in_group("enemy")
-	if enemymove_index >= enemy.EnemyMoves.size(): enemymove_index = 0
-	enemy_move = enemy.EnemyMoves[enemymove_index]
-	enemymove_index += 1
+	var enemy = ActiveBoss
+	enemy_move = enemy.EnemyMoves.pick_random()
 
 func enemy_execute_move() -> void:
+	if turn: return
 	play_move(enemy_move)
 	for i in range(enemy_move.Notes.size()):
 		var newnote = Note.new()

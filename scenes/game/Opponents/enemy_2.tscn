@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dl1oxy848j7p6"]
+[gd_scene load_steps=37 format=3 uid="uid://dl1oxy848j7p6"]
 
 [ext_resource type="Texture2D" uid="uid://cnngcfl5pebha" path="res://assets/characters/Grey minion 2/Grey minion 2 idle animation/grey sprite 2 idle animation.png" id="1_1si43"]
 [ext_resource type="Texture2D" uid="uid://dy2vp075rhtn2" path="res://assets/characters/Grey minion 2/Grey minion 2 death/minion 2 death sprite-Sheet.png" id="2_wth46"]
@@ -7,7 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://d3exno2dwjhjm" path="res://assets/characters/Grey minion 2/Grey minion 2 move 1/grey minion 2, move 1-Sheet.png" id="6_jwyl0"]
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="6_mxubl"]
 [ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="7_o6ign"]
+[ext_resource type="Resource" uid="uid://dn786jsffpwe7" path="res://scenes/game/Moves/enemymoves/enemymove5.tres" id="8_doiqk"]
 [ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="9_7kl78"]
+[ext_resource type="Resource" uid="uid://3pordapvbvmv" path="res://scenes/game/Moves/enemymoves/enemymove6.tres" id="9_d6txl"]
+[ext_resource type="Resource" uid="uid://kswtpxa0l2mw" path="res://scenes/game/Moves/enemymoves/enemymove7.tres" id="10_a6oig"]
+[ext_resource type="Resource" uid="uid://pf6wm541r35i" path="res://scenes/game/Moves/enemymoves/enemymove8.tres" id="11_0xtn0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5kae"]
 atlas = ExtResource("1_1si43")
@@ -237,6 +241,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_12j6e"]
 resource_name = "downHit"
@@ -265,6 +281,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ij6u5"]
@@ -295,6 +323,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 8, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_j1js1"]
@@ -366,6 +406,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_mff14"]
 resource_name = "upHit"
@@ -395,6 +447,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6v0p"]
 _data = {
@@ -408,11 +472,12 @@ _data = {
 }
 
 [node name="Enemy2" type="AnimatedSprite3D" groups=["enemy"]]
+flip_h = true
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
 script = ExtResource("6_mxubl")
-EnemyMoves = Array[ExtResource("7_o6ign")]([null])
+EnemyMoves = Array[ExtResource("7_o6ign")]([ExtResource("8_doiqk"), ExtResource("9_d6txl"), ExtResource("10_a6oig"), ExtResource("11_0xtn0")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

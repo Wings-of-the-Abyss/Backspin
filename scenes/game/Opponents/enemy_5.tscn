@@ -1,109 +1,102 @@
-[gd_scene load_steps=37 format=3 uid="uid://dhfv43lgecgnq"]
+[gd_scene load_steps=32 format=3 uid="uid://crx5kd0iawb4o"]
 
-[ext_resource type="Texture2D" uid="uid://cn2qqmn4sm7v6" path="res://assets/characters/Grey minion 1/Idle animation for grey minion 1/idle animation for gray 1.png" id="1_70y0v"]
-[ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="1_jpg0i"]
-[ext_resource type="Texture2D" uid="uid://c4qashh67ykj4" path="res://assets/characters/Grey minion 1/Grey minion 1 death/minion 1 death anim-Sheet.png" id="2_p5ev3"]
-[ext_resource type="Texture2D" uid="uid://cu8dcmyglkeec" path="res://assets/characters/Grey minion 1/Grey minion move 2/grey minion move 2(crouch)-Sheet.png" id="3_540gf"]
-[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="3_mtg8m"]
-[ext_resource type="Texture2D" uid="uid://bpl8qk2rxoffm" path="res://assets/characters/Grey minion 1/grey minion move 1/grey minion move 1-Sheet.png" id="3_wk2ag"]
-[ext_resource type="Resource" uid="uid://e5vo7i5tay64" path="res://scenes/game/Moves/enemymoves/enemymove1.tres" id="4_cyr3l"]
-[ext_resource type="Texture2D" uid="uid://dgcu1gjut1ei2" path="res://assets/characters/Grey minion 1/Grey minion 1 move 3/grey minion 1 move 3-Sheet.png" id="4_d8igh"]
-[ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="9_xyow5"]
-[ext_resource type="Resource" uid="uid://dhhm7a2biwfww" path="res://scenes/game/Moves/enemymoves/enemymove3.tres" id="9_yyuv3"]
-[ext_resource type="Resource" uid="uid://bw5gw4gieujs3" path="res://scenes/game/Moves/enemymoves/enemymove4.tres" id="10_23s8i"]
-[ext_resource type="Resource" uid="uid://b4u3nxcugtah0" path="res://scenes/game/Moves/enemymoves/enemymove2.tres" id="11_ymvvu"]
+[ext_resource type="Texture2D" uid="uid://f4haivxu1gl2" path="res://assets/characters/Purple minion mini boss/purple minion minion boss idle animation/purple minion mini boss.png" id="1_8mlty"]
+[ext_resource type="Texture2D" uid="uid://cwoul4vj2fpbd" path="res://assets/characters/Purple minion mini boss/purple minion miniboss death anim/purple minion miniboss death -Sheet.png" id="2_pf4rj"]
+[ext_resource type="Texture2D" uid="uid://bq1ttxk7pm4r1" path="res://assets/characters/Purple minion mini boss/move 3 purple minion miniboss/purple miniboss move 3-Sheet.png" id="3_0xem4"]
+[ext_resource type="Texture2D" uid="uid://ceenkjrq0prc3" path="res://assets/characters/Grey minion 3/Grey minion 3 move 1/grey minion 3 move 1-Sheet.png" id="4_wcqgy"]
+[ext_resource type="Texture2D" uid="uid://dkgvhpn688swd" path="res://assets/characters/Purple minion mini boss/Move 2 purple miniboss/purple miniboss move 2-Sheet.png" id="5_xjxlg"]
+[ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="6_jp7ye"]
+[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="7_0j48q"]
+[ext_resource type="AudioStream" uid="uid://bye3xix7hxhcm" path="res://assets/sfx/Pattern 1 (consolidated)_6.wav" id="8_qp1sf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3ujj"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v4py"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_htsg2"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx5j8"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(150, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_52omo"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bysv4"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(300, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7obvf"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dspdj"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(450, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6yhck"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hglf"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(600, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u2558"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sl16"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(750, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8cdvv"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcexf"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(900, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vcr3h"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxlm"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(1050, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhcgs"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihn8a"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(1200, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wuf4j"]
-atlas = ExtResource("1_70y0v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7au8"]
+atlas = ExtResource("1_8mlty")
 region = Rect2(1350, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7stov"]
-atlas = ExtResource("2_p5ev3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_44r6u"]
+atlas = ExtResource("2_pf4rj")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rbbel"]
-atlas = ExtResource("3_wk2ag")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fqam"]
+atlas = ExtResource("3_0xem4")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qvt4l"]
-atlas = ExtResource("4_d8igh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8o16"]
+atlas = ExtResource("4_wcqgy")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqe32"]
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wydgx"]
-atlas = ExtResource("3_540gf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn3g1"]
+atlas = ExtResource("5_xjxlg")
 region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cspdk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e3ujj")
+"texture": SubResource("AtlasTexture_8v4py")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_htsg2")
+"texture": SubResource("AtlasTexture_gx5j8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_52omo")
+"texture": SubResource("AtlasTexture_bysv4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7obvf")
+"texture": SubResource("AtlasTexture_dspdj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6yhck")
+"texture": SubResource("AtlasTexture_6hglf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u2558")
+"texture": SubResource("AtlasTexture_6sl16")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8cdvv")
+"texture": SubResource("AtlasTexture_kcexf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vcr3h")
+"texture": SubResource("AtlasTexture_efxlm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yhcgs")
+"texture": SubResource("AtlasTexture_ihn8a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wuf4j")
+"texture": SubResource("AtlasTexture_j7au8")
 }],
 "loop": true,
 "name": &"default",
@@ -111,7 +104,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7stov")
+"texture": SubResource("AtlasTexture_44r6u")
 }],
 "loop": true,
 "name": &"die",
@@ -119,23 +112,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbbel")
+"texture": SubResource("AtlasTexture_5fqam")
 }],
 "loop": true,
 "name": &"downhit",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qvt4l")
-}],
+"frames": [],
 "loop": true,
 "name": &"lefthit",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jqe32")
+"texture": SubResource("AtlasTexture_b8o16")
 }],
 "loop": true,
 "name": &"righthit",
@@ -143,7 +133,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wydgx")
+"texture": SubResource("AtlasTexture_rn3g1")
 }],
 "loop": true,
 "name": &"uphit",
@@ -470,12 +460,12 @@ _data = {
 "upHit": SubResource("Animation_mff14")
 }
 
-[node name="Enemy1" type="AnimatedSprite3D" groups=["enemy"]]
+[node name="Enemy2" type="AnimatedSprite3D" groups=["enemy"]]
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_cspdk")
-script = ExtResource("1_jpg0i")
-EnemyMoves = Array[ExtResource("3_mtg8m")]([ExtResource("4_cyr3l"), ExtResource("9_yyuv3"), ExtResource("10_23s8i"), ExtResource("11_ymvvu")])
+script = ExtResource("6_jp7ye")
+EnemyMoves = Array[ExtResource("7_0j48q")]([null])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -484,4 +474,4 @@ libraries = {
 autoplay = "idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_xyow5")
+stream = ExtResource("8_qp1sf")
