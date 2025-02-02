@@ -15,6 +15,9 @@ func NoteHit(n: StringName):
 	await player_anim.animation_finished
 	player_anim.play("idle")
 
+func MoveHit(M: StringName) -> void:
+	player_anim.play(M)
+
 func hypehit() -> void:
 	player_anim.play("hype")
 	await player_anim.animation_changed

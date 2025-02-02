@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://dkk8m3cybrfxh"]
+
+[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="1_1f8ff"]
+
+[resource]
+script = ExtResource("1_1f8ff")
+Notes = Array[StringName]([&"right", &"right", &"down", &"left", &"up", &"left", &"up", &"left", &"left", &"right", &"down", &"left", &"right", &"left", &"up"])
+Cost = Array[StringName]([&"down", &"right", &"down", &"up"])
+AnimName = &"headspin"
+Timings = Array[float]([0.2, 0.5, 0.5, 0.2, 0.2, 0.2, 0.4, 0.2, 0.2, 0.5, 0.2, 0.2, 0.5, 0.2, 0.8])
+Multiplier = 1.0

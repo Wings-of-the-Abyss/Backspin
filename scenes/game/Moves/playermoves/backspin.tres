@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://drq0i3hpkq1lf"]
+
+[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="1_whhps"]
+
+[resource]
+script = ExtResource("1_whhps")
+Notes = Array[StringName]([&"left", &"left", &"right", &"left", &"left", &"right", &"up", &"up", &"down", &"down", &"right", &"left", &"right", &"left", &"up"])
+Cost = Array[StringName]([&"left", &"right", &"down", &""])
+AnimName = &"backspin"
+Timings = Array[float]([0.2, 0.5, 0.2, 0.2, 0.5, 0.5, 0.4, 0.2, 0.2, 0.7, 0.2, 0.2, 0.5, 0.8, 0.0])
+Multiplier = 1.0

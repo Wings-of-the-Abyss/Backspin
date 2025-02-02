@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://vuc5b2tqf5qy"]
+
+[ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="1_l8hqv"]
+
+[resource]
+script = ExtResource("1_l8hqv")
+Notes = Array[StringName]([&"right", &"right", &"left", &"down", &"left", &"right", &"left", &"up", &"left", &"left", &"up", &"down", &"right", &"left", &"up"])
+Cost = Array[StringName]([&"down", &"up", &"up", &""])
+AnimName = &"sweepdown"
+Timings = Array[float]([0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.6, 0.2, 0.6, 0.5, 0.2, 0.2, 0.2, 0.2])
+Multiplier = 1.0

@@ -1,13 +1,8 @@
 extends Control
 
-var label_config = LabelSettings.new()
+var label_config = preload("res://scenes/menu/settings_ui.gd")
 
 func _ready():
-	label_config.font = load("res://assets/fonts/PressStart2P.ttf")
-	label_config.font_size = 16
-	label_config.outline_color = Color.BLUE
-	label_config.outline_size = 4
-	
 	PlayerData.HypeMax.connect(spawn_hypetext)
 	PlayerData.NoteHit.connect(spawntext)
 

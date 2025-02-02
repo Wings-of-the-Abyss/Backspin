@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlla330gdcucj"]
+[gd_scene load_steps=9 format=3 uid="uid://dlla330gdcucj"]
 
 [ext_resource type="Script" path="res://scenes/game/fight/fight_ui/move_deck.gd" id="1_qmlsu"]
 [ext_resource type="Texture2D" uid="uid://bechtpvf8jvdh" path="res://assets/ui/Move_card.png" id="2_rme4u"]
+[ext_resource type="Texture2D" uid="uid://boneoglyiy4we" path="res://assets/arrows/Arrowgreen_single.png" id="3_k2tg0"]
+[ext_resource type="Texture2D" uid="uid://c60xqp6tiot1c" path="res://assets/arrows/Arroworange_single.png" id="4_xhs8i"]
+[ext_resource type="Texture2D" uid="uid://b161m6chm1fhq" path="res://assets/arrows/Arrowblue_single.png" id="5_me8un"]
 
 [sub_resource type="Animation" id="Animation_fouvi"]
 length = 0.001
@@ -85,9 +88,9 @@ scale = Vector2(0.209753, 0.209753)
 
 [node name="move1" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = -858.0
+offset_left = -1091.76
 offset_top = -171.63
-offset_right = 1062.0
+offset_right = 828.24
 offset_bottom = 908.37
 scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
@@ -108,6 +111,7 @@ offset_right = -257.318
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_k2tg0")
 
 [node name="Arrow2" type="TextureRect" parent="HBoxContainer/move1"]
 show_behind_parent = true
@@ -123,6 +127,7 @@ offset_right = -7.02185
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_xhs8i")
 
 [node name="Arrow3" type="TextureRect" parent="HBoxContainer/move1"]
 show_behind_parent = true
@@ -138,6 +143,7 @@ offset_right = 252.806
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_me8un")
 
 [node name="Arrow4" type="TextureRect" parent="HBoxContainer/move1"]
 show_behind_parent = true
@@ -156,9 +162,9 @@ grow_vertical = 2
 
 [node name="move2" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = -524.426
+offset_left = -758.186
 offset_top = -171.63
-offset_right = 1395.57
+offset_right = 1161.81
 offset_bottom = 908.37
 scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
@@ -227,9 +233,9 @@ grow_vertical = 2
 
 [node name="move3" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = -185.933
+offset_left = -419.693
 offset_top = -171.63
-offset_right = 1734.07
+offset_right = 1500.31
 offset_bottom = 908.37
 scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
@@ -298,9 +304,9 @@ grow_vertical = 2
 
 [node name="move4" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 152.56
+offset_left = -81.2003
 offset_top = -171.63
-offset_right = 2072.56
+offset_right = 1838.8
 offset_bottom = 908.37
 scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
@@ -354,6 +360,78 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Arrow4" type="TextureRect" parent="HBoxContainer/move4"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 265.252
+offset_top = -268.0
+offset_right = 510.252
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="move5" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+offset_left = 243.143
+offset_top = -171.63
+offset_right = 2163.14
+offset_bottom = 908.37
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+texture_normal = ExtResource("2_rme4u")
+ignore_texture_size = true
+
+[node name="Arrow1" type="TextureRect" parent="HBoxContainer/move5"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -502.318
+offset_top = -268.0
+offset_right = -257.318
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Arrow2" type="TextureRect" parent="HBoxContainer/move5"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.022
+offset_top = -268.0
+offset_right = -7.02197
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Arrow3" type="TextureRect" parent="HBoxContainer/move5"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.80615
+offset_top = -268.0
+offset_right = 252.806
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Arrow4" type="TextureRect" parent="HBoxContainer/move5"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 8
@@ -426,3 +504,6 @@ libraries = {
 [connection signal="button_down" from="HBoxContainer/move4" to="." method="_on_move_4_button_down"]
 [connection signal="mouse_entered" from="HBoxContainer/move4" to="." method="_on_move_mouse_entered" binds= [4]]
 [connection signal="mouse_exited" from="HBoxContainer/move4" to="." method="_on_move_mouse_exited" binds= [4]]
+[connection signal="button_down" from="HBoxContainer/move5" to="." method="_on_move_5_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/move5" to="." method="_on_move_mouse_entered" binds= [5]]
+[connection signal="mouse_exited" from="HBoxContainer/move5" to="." method="_on_move_mouse_exited" binds= [5]]

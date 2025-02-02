@@ -2,6 +2,9 @@ extends AnimationPlayer
 
 const ENEMY_1 = preload("res://scenes/game/Opponents/enemy_1.tscn")
 const ENEMY_2 = preload("res://scenes/game/Opponents/enemy_2.tscn")
+const ENEMY_3 = preload("res://scenes/game/Opponents/enemy_3.tscn")
+const ENEMY_4 = preload("res://scenes/game/Opponents/enemy_4.tscn")
+const ENEMY_5 = preload("res://scenes/game/Opponents/enemy_5.tscn")
 
 const ENEMY_ORDER = [
 	ENEMY_1,

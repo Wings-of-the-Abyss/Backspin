@@ -24,12 +24,11 @@ func _ready():
 
 func update_hype(amount: int):
 	Hype = max(0, Hype+amount)
-	if amount > 0:
+	if amount > 0 and !TurnManager.turn:
 		NoteHit.emit(amount)
 	hype_updated.emit()
 	if Hype >= 100:
 		HypeMax.emit()
-		get_tree().get_first_node_in_group("player").hypehit()
 		HP = 100
 		damage_taken.emit()
 		Hype = 0

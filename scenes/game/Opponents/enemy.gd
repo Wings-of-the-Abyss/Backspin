@@ -1,7 +1,7 @@
 extends AnimatedSprite3D
 
 @export var EnemyMoves: Array[Move] = []
-var Health: float = 100
+var Health: float = 500
 var Hype: float = 0.0
 @onready var anims = $AnimationPlayer
 

@@ -98,7 +98,7 @@ func selection_complete() -> void:
 ##Use this to add a move from the available bunch to the queue, use their index in the deck (card number 0, 1, etc)
 func add_move_to_queue(move: Move) -> bool:
 	var has_points = true
-	for N in move.Notes:
+	for N in move.Cost:
 		if N == &"": continue
 		if !PlayerData.ActionPoints.has(N):
 			has_points = false
@@ -120,6 +120,7 @@ func execute_queue() -> void:
 
 ##Executes the sequence of notes
 func play_move(move: Move) -> void:
+	get_tree().get_first_node_in_group("player").MoveHit(move.AnimName)
 	for i in range(move.Notes.size()):
 		var note_type = move.Notes[i]
 		var note = Note.new()

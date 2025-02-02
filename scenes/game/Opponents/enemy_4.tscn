@@ -1,9 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://vjxdv88clgcu"]
+[gd_scene load_steps=33 format=3 uid="uid://vjxdv88clgcu"]
 
 [ext_resource type="Texture2D" uid="uid://f4haivxu1gl2" path="res://assets/characters/Purple minion mini boss/purple minion minion boss idle animation/purple minion mini boss.png" id="1_np6pp"]
 [ext_resource type="Texture2D" uid="uid://cwoul4vj2fpbd" path="res://assets/characters/Purple minion mini boss/purple minion miniboss death anim/purple minion miniboss death -Sheet.png" id="2_osybv"]
 [ext_resource type="Texture2D" uid="uid://bq1ttxk7pm4r1" path="res://assets/characters/Purple minion mini boss/move 3 purple minion miniboss/purple miniboss move 3-Sheet.png" id="3_ob88u"]
-[ext_resource type="Texture2D" uid="uid://ceenkjrq0prc3" path="res://assets/characters/Grey minion 3/Grey minion 3 move 1/grey minion 3 move 1-Sheet.png" id="4_euug5"]
+[ext_resource type="Texture2D" uid="uid://dj6x7xt6rla5i" path="res://assets/characters/Purple minion mini boss/Purple miniboss move 1/purple miniboss move 1-Sheet.png" id="4_86env"]
 [ext_resource type="Texture2D" uid="uid://dkgvhpn688swd" path="res://assets/characters/Purple minion mini boss/Move 2 purple miniboss/purple miniboss move 2-Sheet.png" id="5_27jqm"]
 [ext_resource type="Script" path="res://scenes/game/Opponents/enemy.gd" id="6_hi4vp"]
 [ext_resource type="Script" path="res://scenes/game/Moves/MoveCard.gd" id="7_du3dh"]
@@ -57,8 +57,12 @@ region = Rect2(0, 0, 150, 150)
 atlas = ExtResource("3_ob88u")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b8o16"]
-atlas = ExtResource("4_euug5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lund"]
+atlas = ExtResource("4_86env")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm2a1"]
+atlas = ExtResource("4_86env")
 region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rn3g1"]
@@ -118,14 +122,17 @@ animations = [{
 "name": &"downhit",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lund")
+}],
 "loop": true,
 "name": &"lefthit",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b8o16")
+"texture": SubResource("AtlasTexture_pm2a1")
 }],
 "loop": true,
 "name": &"righthit",
